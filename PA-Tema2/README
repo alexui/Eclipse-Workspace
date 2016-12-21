@@ -1,0 +1,71 @@
+Budau Alexandru 323 CB
+
+TEMA2 - PROIECTAREA ALGORITMILOR
+
+PROBLEMA1 - NUMERE PITIPRIME
+
+Utilizand metoda ciurului lui Eratostene de generare a numerelor prime ,am generat un numar finit de numere pitiprime utilizand un program separat.
+Astfel in intervalul 0 - 8 * 10^7 exista 82 de numere pitiprime, ele putand fi stocate intr-o lista de numere intregi.
+Am ales aceasta metoda pentru a nu fi nevoit sa utilizez metoda clasica de testare daca un numar este prim, care ar fi fost apelata de foarte multe ori si ar fi crescut timpii de executie.
+
+Am ales sa aflu numerele pitiprime mai mici de 8 * 10^7 pentru ca , avand numere intre 0 si 10^12 numerele pitiprime foramate cu cifrele lor nu depasesc 8 * 10^7.
+Timpul de executie nu creste considerabil daca vectorul de numere ptiprime ar contine valori pana la 10^12.
+
+Mod de rezolvare:
+Se citesc din fisierul 'pitiprim.in' , N si N numere intregi de maxim 10^12.
+Se citesc din fisierul 'primes.txt' numerele pitiprime si se salveaza intr-o lista. (numerele pitiprime de la 0 la 8*10^7 sunt salvate in fisierul prime.txt in ordine crescatoare).
+Pentru ficare numar citit se aplica algoritmul de aflare a numarului pitiprim maxim ce se poate forma cu cifrele lui, apoi rezultatul se afiseaza in fisierul de iesire.
+
+metoada - getMaxPitiPrime
+Pentru fiecare numar citit (long),se face o descompunere in cifre (O(1)) si se aplica un algoritm backtracking optimizat in care se micsoreaza domeniul odata cu ramificarea. Domeniul va fi numarul de cifre ramase in lista. 
+
+metoda -doBKT
+-metoda primeste un numar intreg : rezultatul - initial 0, si o lista de cifre care se pot atasa la rezultat (domeniul)
+-maximul se initializeaza cu rezultatul curent (initial 0)
+-se creaza un vector de numere marcate astfel incat la un pas de baktracking sa nu se intre in recursivitate de mai multe ori pentru o cifra care a fost tratata la un alt pas el; retine daca 0,1,...9 au fost tratate
+-se parcurge lista de cifre
+-pentru fiecare cifra din lista , ataseaza cifra la rezultat (atasare la dreapta)
+-daca numarul nou format e pitiprim iar el nu a fost tratat la un alt pas anterior de backtracking
+			-	se creaza o copie a cifrelor (domeniului), din care se va elimina cifra care s-a atasat
+			-	rezultatul nou obtinut (temp) ,impreuna cu copia vor fi trimise ca parametri unui nou apel al metodei doBKT()
+			-	valoarea de return a metodei va fi comparata cu maximul curent pentru a actualiza numarul pitiprim maxim
+			
+-un pas de backracking se va opri atunci cand se termina de parcurs toata lista de cifre (domeniul)
+-daca nici o cifra din lista nu se poate adauga la dreapta atunci valoarea lui max (si implicit cea de return) va fi valoarea rezultatului curent (cel primit ca parametru)
+
+Complexitate : fie k numarul de cifre a unui numar nr;
+
+pentru fiecare numar se aplica algoritmul de backtracking => O(n * k^k * log d)
+verificarea daca un numar este prim O(log d) - cautare binara in lista de numere pitiprime (vazuta ca o constanta) (d dimensiunea listei de numere pitiprime)
+
+
+PROBLEMA 2 - SCRISORI
+
+Se aplica BFS din sursa si din destinatie.
+
+* structura unui nod
+	 * id
+	 * culoare - alb,negru, rosu daca e vizitat din sursa, albastru daca e vizitat din destinatie
+	 * distanta de la sursa pana la el
+	 * lista sortata de vecini
+
+Se initializeaza lista de noduri.
+Se citesc N,K,A,B si cele K muchii care se adauga in listele de adiacenta a nodurilor ce alcatuiesc muchia.
+
+Se aplica BFS pe graful format, neorientat format numai din muchiile de cost minim (A).
+	-Se introduc initial in coada atat sursa cat si destinatia pentru a eficientiza parcurgerea BFS.
+	-Nodurile vizitate din sursa vor avea o culoare diferita de cele vizitate din destinatie , in timpul parcurgerii.
+
+	-Se creaza coada.
+	-Se adauga sursa si destinatia in coada.
+	-Se vizualizeaza primul nod din coada : u.
+	-Se parcurg vecinii lui u.
+	-Se cauta acei vecini cu care nodul u este legat printr-o muchide de cost A - se aplica cautare binara pe lista de adiacenta.
+	-Nodurile care nu se gasesc in lista de adiacenta a nodului u au cost minim si intra in calculul drumului minim.
+	-Daca un nod vizitat din sursa este adiacent cu un nod vizitat din destinatie => s-a gasit rezultat
+		-cautarea a luat sfarsit; se aduna distantele fiecarui nod + costul muchiei adiacente, care este A.
+	-Daca nodul este nevizitat , se adauga in coada.
+
+	-Dupa ce un nod este tratat este scos din coada; lui i se va asocia culoarea pentru nodurile vizitate (negru).
+
+

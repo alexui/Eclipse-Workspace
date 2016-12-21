@@ -1,0 +1,19 @@
+package Clase_abstraca_si_interfete;
+
+public class IncrementContor implements Task{
+
+	static int val;
+
+	@Override
+	public void execute() {
+		
+		val++;
+		System.out.println("Incremented value: "+val);
+	}
+
+	public static int getVal() {
+		return val;
+	}
+	
+	
+}

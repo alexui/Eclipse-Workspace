@@ -1,0 +1,32 @@
+package Clase_abstraca_si_interfete;
+
+public class PrintMessege implements Task{
+
+	private String messege;
+	private Integer rand;
+	
+	public PrintMessege(String s)
+	{
+		this.messege=s;
+	}
+	
+	public PrintMessege()
+	
+	public void afisareMesaj(String s)
+	{
+		System.out.println(this.messege);
+		this.messege=null;
+	}
+
+	@Override
+	public void genRandomNr() {
+
+		
+	}
+
+	@Override
+	public void incContor() {
+		// TODO Auto-generated method stub
+		
+	}
+}

@@ -1,0 +1,117 @@
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class MyHashMapImpl<K,V> implements MyHashMap<K, V>{
+
+	private ArrayList<myBucket> bucket_list;
+	private myBucket bucket;
+	int num_buckets;
+	
+	public MyHashMapImpl(int NUM_BUCKETS){
+		this.bucket_list = new ArrayList<myBucket>(NUM_BUCKETS);
+		num_buckets=NUM_BUCKETS;
+	}
+	
+	private class myBucket implements MyHashMap.Bucket<K, V>
+	{
+		int hashcode;
+		ArrayList<myEntry> entries;
+		
+		public myBucket(int hashcode){
+			entries = new ArrayList<myEntry>();
+			this.hashcode= hashcode;
+		}
+		
+		private class myEntry implements MyHashMap.Entry<K, V>{
+
+			private K key;
+			private V value;
+			
+			public myEntry(K key, V value){
+				this.key = key;
+				this.value= value;
+			}
+			
+			@Override
+			public K getKey() {
+				return key;
+			}
+
+			@Override
+			public V getValue() {
+				return value;
+			}
+
+			public void setKey(K key) {
+				this.key = key;
+			}
+
+			public void setValue(V value) {
+				this.value = value;
+			}
+			
+		}
+		
+		@Override
+		public List<? extends MyHashMap.Entry<K, V>> getEntries() {
+			return entries;
+		}
+		
+	}
+	@Override
+	public V get(K key) {
+		
+		return null;
+	}
+
+	/**
+	 * Adauga o asociere cheie-valoare.
+	 * 
+	 * @param key
+	 * @param value
+	 * @return valoarea anterioara asociata cheii key SAU null daca cheia nu exista
+	 */
+	
+	@Override
+	public V put(K key, V value) {
+
+		String s = new String(); // se converteste cheia la un String 
+		s= String.valueOf(key.toString().charAt(0));  // cheia dupa care se a face cautarea este primul caracter din String
+		int hashcode = translate(s.hashCode()); // se calculeaza hashcode-ul pentru cheie 
+		if(bucket_list.get(hashcode)==null)
+		{
+			bucket_list.set(hashcode, new  myBucket(hashcode));
+			return null;
+		}
+		
+		
+	}
+
+	@Override
+	public V remove(K key) {
+		
+		return null;
+	}
+
+	@Override
+	public int size() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	
+
+	@Override
+	public List<? extends MyHashMap.Bucket<K, V>> getBuckets() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+	private int translate(int hashcode)
+	{
+		return Math.abs(hashcode)%num_buckets;
+	}
+
+}

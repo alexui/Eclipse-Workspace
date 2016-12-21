@@ -1,0 +1,202 @@
+import java.io.PrintWriter;
+import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+
+
+
+public class MyHashTesterForStudent {
+
+	/**
+	 * @param args
+	 */
+	
+	private  ArrayList<Student> myInstances;
+	private  ArrayList<Student> whatToGet;
+	private MyHashMapImpl<Student, Integer> hashmap;
+	
+	public MyHashTesterForStudent(){
+		
+	}
+	
+	
+	public MyHashMapImpl<Student,Integer> getHashMap(){
+		return this.hashmap;
+	}
+	
+	
+	public ArrayList<Student> getMyInstances(){
+		return myInstances;
+	}
+	
+	public ArrayList<Student> getWhatToGet(){
+		return whatToGet;
+	}
+	
+	private void putRandomInstances(int max_val)
+	{
+		myInstances = new ArrayList<Student>();
+		for(int i=0;i<max_val;i++){
+			myInstances.add(new Student(getRandomString(),(int)(Math.random()*10)+17));
+		}
+	}
+	
+	private void getRandomInstances(int max_val){
+		
+		int index;
+		whatToGet = new ArrayList<Student>();
+		for(int i=0;i<max_val;i++){
+			index=(int)(Math.random()*myInstances.size());
+			whatToGet.add(myInstances.get(index));
+		}
+	}
+	
+	private void createHashMap(){
+		if(myInstances ==null) return;
+		
+		for(int i=0;i<myInstances.size();i++){
+			this.hashmap.put(myInstances.get(i), myInstances.get(i).getVarsta());
+		}
+	}
+	
+	private void printHashMap(String filepath){
+		
+		if(hashmap.getBuckets()==null) return;
+		PrintWriter out = null;
+		try{
+			out = new PrintWriter(filepath);
+			int i = 0;
+			
+			for(i=0;i<hashmap.getBuckets().size();i++){
+				out.write(String.valueOf(i));
+				out.println();
+				System.out.println(String.valueOf(i));
+				if(hashmap.getBuckets().get(i)!=null)
+					{
+					
+					out.format("%25s  %10s  %10s %30s %50s\n\n","Nume","Varsta","Value","Hascode","Hashcode translatat");
+					System.out.format("%25s  %10s  %10s %30s %50s\n\n","Nume","Varsta","Value","Hascode","Hashcode translatat");
+
+					for(int j=0;j<hashmap.getBuckets().get(i).getEntries().size();j++)
+					
+						{
+						//%25s face conversia automata la string
+						out.format("%25s  %10s  %10s %30s %50s\n", 
+								(hashmap.getBuckets().get(i).getEntries().get(j).getKey().getNume()),
+								(hashmap.getBuckets().get(i).getEntries().get(j).getKey().getVarsta()),
+								(hashmap.getBuckets().get(i).getEntries().get(j).getValue()),
+								(hashmap.getBuckets().get(i).getEntries().get(j).getKey().hashCode()),
+												(
+												translate(
+												hashmap.getBuckets().get(i).getEntries().get(j).getKey().hashCode(),
+												hashmap.getBuckets().size()
+														 )
+												)
+								);
+								
+						System.out.format("%25s  %10s  %10s %30s %50s\n", 
+							(hashmap.getBuckets().get(i).getEntries().get(j).getKey().getNume()),
+							(hashmap.getBuckets().get(i).getEntries().get(j).getKey().getVarsta()),
+							(hashmap.getBuckets().get(i).getEntries().get(j).getValue()),
+							(hashmap.getBuckets().get(i).getEntries().get(j).getKey().hashCode()),
+												(
+												translate(
+												hashmap.getBuckets().get(i).getEntries().get(j).getKey().hashCode(),
+												hashmap.getBuckets().size()
+														 )
+												)
+							);
+						} //end for
+					}//end if
+			}//end for
+		}//end try
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		finally{
+			if(out!=null)
+				out.close();
+		}
+	}
+	
+	private String getRandomString() {
+		Random r = new Random();
+		StringBuffer buf = new StringBuffer();
+		String s = new String();
+
+			buf.delete(0, buf.length());
+			int length = r.nextInt(5) + 5; // avoid 0 length strings
+
+			for (int i = 0; i < length; i++) {
+				char c = (char)(r.nextInt(26) + 97);
+				buf.append(c);
+			}
+			
+			s= buf.toString();
+		
+		return s;
+	}
+	
+	private int translate(int hashcode, int num_buckets)
+	{
+		return Math.abs(hashcode)%num_buckets;
+	}
+	
+	public void run(MyHashMapImpl<Student,Integer> hm,int number_of_instances,String filepath,int number_of_seeks){
+		
+		this.hashmap = hm;
+		if(myInstances==null)
+		{
+			putRandomInstances(number_of_instances);
+		}
+		createHashMap();
+		printHashMap(filepath);
+		
+		getRandomInstances(number_of_seeks);
+		
+		System.out.println("What to get:");
+		 	
+			int i;
+			for(i=0;i<whatToGet.size();i++)
+				System.out.format("%25s %10s %30s %50s\n\n",
+						whatToGet.get(i).getNume(),
+						whatToGet.get(i).getVarsta(),
+						whatToGet.get(i).hashCode(),
+						translate(whatToGet.get(i).hashCode(),hashmap.getBuckets().size())
+						);
+
+			long d = new Date().getTime();
+
+			for(i=0;i<whatToGet.size();i++){
+				System.out.print("\nSearching for '"+whatToGet.get(i).getNume()+"' : ");
+				System.out.println("Value: "+getValue(whatToGet.get(i)));
+				}
+			System.out.println("Time elapsed: "+(new Date().getTime()-d)+" miliseconds");
+			
+	}
+	
+	private Integer getValue(Student key){
+		
+		List<? extends MyHashMap.Bucket<Student,Integer>> buckets= hashmap.getBuckets();
+		int hashcode = translate(key.hashCode(),buckets.size()); // se obtine codul translatat
+		List<? extends MyHashMap.Entry<Student, Integer>> entries = hashmap.getBuckets().get(hashcode).getEntries();
+		for(MyHashMap.Entry<Student, Integer> entry : entries){
+			if(entry.getKey().equals(key))
+				return entry.getValue();
+		}
+		return null;
+	}
+	
+	public static void main(String[] args) {
+
+		MyHashMapImpl<Student, Integer> hm1 = new MyHashMapImpl<Student,Integer>(20); 
+		
+		
+		MyHashTesterForStudent test = new MyHashTesterForStudent();
+		test.run(hm1,1000,"Student.txt",20);
+				
+		}
+
+}

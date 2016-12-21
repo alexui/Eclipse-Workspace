@@ -1,0 +1,28 @@
+package ListeSimpluInlantuite;
+import java.util.*;
+
+public class List {
+
+		private Info a;
+		private List urm;
+		
+		public List()
+		{
+			a = new Info();
+			urm=null;
+		}
+		
+		public void setInfoNod()
+		{
+			Scanner scan = new Scanner(System.in);
+			System.out.println("int: ");
+			System.out.println("string: ");
+			a.setInfo(n, str);
+		}
+		
+		public void addNodBefore(int n,String str)
+		{
+			List nod = new List();
+			
+		}
+}

@@ -1,0 +1,280 @@
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+enum AccountCreate{
+	SUCCESS,
+	EXISTING_USERNAME,
+	WRONG_USERNAME_LENGTH,
+	WRONG_PASSWORD_LENGTH
+}
+
+enum DataBaseEdit {
+	SUCCESS,
+	UNEXISTING_USERNAME
+}
+
+enum Authentication {
+	SUCCESS,
+	UNEXISTING_USERNAME,
+	PASSWORD_NOT_MATCH,
+	WRONG_USERNAME,
+	WRONG_PASSWORD
+}
+
+class MySQL {
+	
+	public static final int DUPLICATE_ERROR = 1062;
+}
+
+public class Server {
+
+	 // JDBC driver name and database URL
+	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
+	static final String DB_URL = "jdbc:mysql://localhost/instant_messenger";
+	
+//  Database credentials
+	static final String USER = "root";
+   	static final String PASS = "oracle123";
+   	
+   	Connection conn = null;
+	Statement stmt = null;
+	ResultSet rs = null;
+   	
+   	public Server(){
+   		//Register JDBC driver
+		try {
+			Class.forName(JDBC_DRIVER);
+			
+			// Open a connection
+			System.out.println("Connecting to database...");
+			conn = DriverManager.getConnection(DB_URL,USER,PASS);	       
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+   	}
+   	
+   	public AccountCreate insertUserPass(String username, String password) {
+   		
+   		if (password.length() < 8 || password.length() > 32) 
+   			return AccountCreate.WRONG_PASSWORD_LENGTH;
+   		
+   		if (username.length() < 8 || username.length() > 32) 
+   			return AccountCreate.WRONG_USERNAME_LENGTH;
+   		
+   		try {
+	   		stmt = conn.createStatement();
+	   		String sql,sql1;
+	   		
+	   		int no_users, last_id;
+	   		//get last used id
+	   		sql = "SELECT no_users, last_user_id FROM database_info";
+	   		System.out.println(sql);
+	   		rs = stmt.executeQuery(sql);
+	   		
+	   		last_id = 0;
+	   		no_users = 0;
+	   		
+	   		while (rs.next()) {
+		   		no_users = rs.getInt("no_users");
+		   		last_id = rs.getInt("last_user_id");
+	   		}
+	   		
+	   		//insert user
+	   		last_id++;
+	   		sql = "INSERT INTO users VALUES ("+last_id+",'"+username+"','"+password+"');";
+	   		System.out.println(sql);
+			stmt.executeUpdate(sql);
+	   		
+	   		//update database_info
+			no_users++;
+			incrementNoUsers();	
+			
+			//get user_db_id
+			int id;
+			sql = "SELECT id FROM users WHERE user_name = "+"'"+username+"'";
+			System.out.println(sql);
+	   		rs = stmt.executeQuery(sql);
+	   		
+	   		id = 0;
+	   		while (rs.next()) {
+		   		id = rs.getInt("id");
+	   		}
+			
+	        
+	   		//drop tables if exists
+	   		sql1 = "DROP TABLE IF EXISTS contacts_"+id;
+	   		stmt.executeUpdate(sql1);
+			
+	   		//create contacts table
+	   		sql = "CREATE TABLE contacts_"+id+"( id INTEGER )";
+			System.out.println(sql);
+			stmt.executeUpdate(sql);
+	        
+			stmt.close();
+			
+   		}catch(SQLException se){
+   			if (se.getErrorCode() == MySQL.DUPLICATE_ERROR)
+   				return AccountCreate.EXISTING_USERNAME;
+   			se.printStackTrace();
+   		}finally {
+   			try{
+   				if(stmt!=null)
+   					stmt.close();
+   			}catch(SQLException se2){
+   				se2.printStackTrace();
+   			}
+   		}
+   		
+   		return AccountCreate.SUCCESS;
+   	}
+   	
+   	private void incrementNoUsers() throws SQLException {
+   	
+   		String sql,sql1;
+   		
+   		sql = "UPDATE database_info SET no_users = no_users+1"; 
+   		stmt.executeUpdate(sql);
+        sql1 = "UPDATE database_info SET last_user_id = last_user_id+1";
+        stmt.executeUpdate(sql1);
+        
+        
+   	}
+   	
+   	private void incrementNoConnectedUsers() {
+   		
+   	}
+   	
+ 	public DataBaseEdit editContactDetails(String username,int id,String name,String middle,String surname,String nickname
+ 			,String job_title,String work_place,String phone_number,String email,String birthdate) {
+   		
+   		String sql;
+   		
+   		try{
+   		stmt = conn.createStatement();
+   	    sql = "INSERT INTO contact_details(id,name,middle,surname,nickname,job_title,work_place,phone_number,email,birthdate)"
+   	    		+ " VALUES("+id+",'"+name+"','"+middle+"','"+surname+"','"+nickname+"','"+job_title+"','"+work_place+"','"+phone_number+"','"+email+"','"+birthdate+"');";	
+   		stmt.executeUpdate(sql);
+   		
+   		}catch(SQLException se){
+   			System.out.println(se.getMessage());
+   			return DataBaseEdit.UNEXISTING_USERNAME;
+   		}
+   		
+   		return DataBaseEdit.SUCCESS;
+   	}
+   	
+   	public DataBaseEdit removeUser(String username) throws SQLException {
+   		
+   		String sql,sql1,sql2;
+   		
+   		try{
+   		stmt = conn.createStatement();
+   		sql = "DELETE from users WHERE user_name = "+"'"+username+"';";
+   		stmt.executeUpdate(sql);
+   		sql1 = "UPDATE database_info SET no_users = no_users-1;";
+   		stmt.executeUpdate(sql1);
+   		sql2 = "UPDATE database_info SET last_user_id = last_user_id-1;";
+   		stmt.executeUpdate(sql2);
+   		}catch(SQLException se){
+   			return DataBaseEdit.UNEXISTING_USERNAME;
+   		}
+   		
+   		return DataBaseEdit.SUCCESS;
+   	}
+   	
+   	public DataBaseEdit removeAllUsers() throws SQLException {
+   		
+   		String sql,sql1;
+   		
+   		stmt = conn.createStatement();
+   		sql = "truncate users;";
+   		stmt.executeUpdate(sql);
+   		sql1 = "UPDATE database_info SET no_users = "+0+" , last_user_id = "+0; 
+   		stmt.executeUpdate(sql1);
+   		return DataBaseEdit.SUCCESS;
+    
+   	}
+   	
+   	public DataBaseEdit removeContactDetails(String username) {
+   		
+   		String sql;
+   		
+   		try{
+   	   		stmt = conn.createStatement();
+   	   		sql = "DELETE from contact_details WHERE user_name = "+"'"+username+"';";
+   	   		stmt.executeUpdate(sql);
+   	   		}catch(SQLException se){
+   	   			return DataBaseEdit.UNEXISTING_USERNAME;
+   	   		}
+   	   	
+   		return DataBaseEdit.SUCCESS;
+   	}
+   	
+   	public Authentication authenticate(String username, String password) {
+   		
+   		return Authentication.SUCCESS;
+   	}
+   	
+   	public ArrayList<HashMap<String, String>> getContacts(String username) {
+   		
+   		return null;
+   	}
+   	
+   	public ArrayList<HashMap<String, String>> getOnlineContacts(String username) {
+   		
+   		return null;
+   	}
+   	
+   	public void signOut(String username) {
+   		
+   	}
+   	
+   	public void sendOfflineMessage(String source) {
+   		
+   	}
+   	
+   	private void onlineNotifyContacts(String username) {
+   		
+   	}
+   	
+   	private void offlineNotifyContacts(String username) {
+   		
+   	}
+   	
+   	public void resetDatabase() {
+   		
+   	}
+   	
+   	public void cleanEnvironment() {
+		 try {
+			 if (conn != null)
+				 conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		 
+   	}
+	
+	/**
+	 * @param args
+	 * @throws SQLException 
+	 */
+	public static void main(String[] args) throws SQLException {
+		Server s = new Server();
+		System.out.println(s.insertUserPass("alex.budau", "hey_mama"));
+		System.out.println(s.insertUserPass("alex.busu", "hey_yooo"));
+		System.out.println(s.insertUserPass("cezar.alin", "salut!!!!"));
+	//	s.removeAllUsers();				
+	//	s.removeUser("cezar.alin");
+//		System.out.println(s.editContactDetails("alex.budau",1,"Budau","Alexandru","","","","","212096","budau@gmail.com","1993-10-14"));
+		System.out.println(s.editContactDetails("alex.busu",2,"Busu","Alexandru","","","","","","",""));
+//		System.out.println(s.removeContactDetails("alex.busu"));
+//		s.cleanEnvironment();
+
+		
+	}
+
+}

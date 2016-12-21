@@ -1,0 +1,13 @@
+package ListeSimpluInlantuite;
+
+public class Info {
+	
+	private int number;
+	
+	public Info(int n)
+	{
+		this.number=n;
+	}
+	
+	public 
+}

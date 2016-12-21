@@ -1,0 +1,14 @@
+import java.util.Scanner;
+
+
+public class Test {
+
+	public static void main(String[] args) {
+		
+		String a = "alex este mare";
+		Scanner s = new Scanner(a);
+		System.out.println(s.next());
+		System.out.println(s.next());
+		System.out.println(s.next());
+	}
+}

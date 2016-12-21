@@ -1,0 +1,9 @@
+package Clase_abstraca_si_interfete;
+
+public interface Task {
+	
+	public void afisareMesaj(String s);
+	public void genRandomNr();
+	public void incContor();
+	
+}

@@ -1,0 +1,80 @@
+package Alg_BMH;
+
+public class RadixTree {
+	
+	private String key;
+	private int pos;
+	private RadixTree[] urm;
+	private int sub=0;// numar noduri subordonate
+	
+	public RadixTree()
+	{
+		this.pos=0;
+		this.urm=new RadixTree[0];
+		this.key="";
+	}
+	
+	public RadixTree(String s)
+	{
+		this.urm[pos]= new RadixTree();
+		this.urm[pos].addNod(s);
+	}
+	
+	public RadixTree(String s1,String s2)
+	{
+		this.urm[pos]= new RadixTree();
+		this.urm[pos].addNod(s1);
+		this.urm[pos].addNod(s2);
+	}
+
+	
+	public void addNod(String s) 
+	{
+		this.urm = Realloc(this.urm,this.urm.length+1);
+		this.urm[sub]=new RadixTree();
+		this.urm[sub].key=s;
+		
+	}
+
+
+	public int getPos() {
+		return pos;
+	}
+
+	public void setPos(int pos) {
+		this.pos = pos;
+	}
+
+	public String getKey() {
+		return key;
+	}
+
+	public void setKey(String key) {
+		this.key = key;
+	}
+
+	
+	public RadixTree[] getUrm() {
+		return urm;
+	}
+
+	public int getSub() {
+		return sub;
+	}
+	
+	private RadixTree[] Realloc(RadixTree[] array,int new_dim)
+	{
+		RadixTree[] aux = new RadixTree[new_dim];
+		int old_dim=array.length;
+		int preserveLength = Math.min(old_dim, new_dim);
+		System.arraycopy(array, 0, aux, 0, preserveLength);
+		return aux;
+	}
+	
+	public void extendUrm()
+	{
+		this.urm = Realloc(this.urm,this.urm.length+1);
+	}
+	
+
+}

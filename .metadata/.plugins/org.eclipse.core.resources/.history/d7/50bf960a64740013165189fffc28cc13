@@ -1,0 +1,15 @@
+package Ex1;
+import org.junit.Assert;
+import org.junit.Before;
+
+
+public class Test {
+
+	public Zoo zoo;
+	
+	@Before
+	public void setup()
+	{
+		zoo = new Zoo();
+	}
+}

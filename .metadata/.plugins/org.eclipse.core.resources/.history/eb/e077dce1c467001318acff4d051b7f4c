@@ -1,0 +1,42 @@
+package Ex4;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.TreeMap;
+
+
+public class MyMapTest {
+
+	public static <T extends Comparable<T>> void sort(List<T> list){
+		
+		Collections.sort(list);
+	}
+	
+	public static void main(String[] args) {
+		
+		MyMap m = new MyMap(10, new Cresc<Integer>());
+		TreeMap<Integer, LinkedList<Student>>map = m.getMap();
+		ArrayList<Student> list = new ArrayList<Student>();
+		list.add(new Student("Alex",9.6f));
+		list.add(new Student("George",7.5f));
+		list.add(new Student("Radu",7.6f));
+		list.add(new Student("Florin",8.2f));
+		list.add(new Student("Stefan",7.5f));
+		
+		m.add(list.get(0).getMedia(),list.get(0) );
+		m.add(list.get(1).getMedia(),list.get(1) );
+		m.add(list.get(2).getMedia(),list.get(2) );
+		m.add(list.get(3).getMedia(),list.get(3) );
+		System.out.println(map.toString());
+		
+		Iterator<Integer> i = map.keySet().iterator();
+		while(i.hasNext())
+		{
+			System.out.println(map.get(i.next()));
+		}
+	
+}
+}

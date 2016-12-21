@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;lab7/invoicedata&apos; to &apos;invoicedata.txt&apos;" description="Rename resource &apos;invoicedata&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="invoicedata" name="invoicedata.txt" stamp="1381859102058" updateReferences="true"/>
+</session>

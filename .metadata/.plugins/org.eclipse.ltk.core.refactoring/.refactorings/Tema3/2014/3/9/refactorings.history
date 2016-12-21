@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 3 elements to &apos;Tema3 POO/src/(default package)&apos;&#x0D;&#x0A;- Original project: &apos;Tema3&apos;&#x0D;&#x0A;- Destination element: &apos;Tema3 POO/src/(default package)&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     MyHashMap.java&#x0D;&#x0A;     MyHashMapImpl.java&#x0D;&#x0A;     HashTester.java" description="Copy compilation units" destination="=Tema3 POO/src&lt;" element1="/src&lt;{MyHashMap.java" element2="/src&lt;{MyHashMapImpl.java" element3="/src&lt;{HashTester.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1393677581388" units="3" version="1.0"/>
+</session>

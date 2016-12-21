@@ -1,0 +1,13 @@
+1389738859640	Delete elements
+1389738942252	Rename field 'ResultStack'
+1389738953684	Rename field 'OperatorStack'
+1389739110949	Rename type 'BinaryOperators'
+1389739222199	Rename type 'CreateTree'
+1389739236764	Rename type 'Node'
+1389739279679	Rename method 'build'
+1389739786533	Rename method 'searchForCharacter'
+1389739873787	Rename local variable 'parse'
+1389739913755	Rename local variable 'token'
+1389739990935	Rename field 'e'
+1389740318256	Rename field 'root'
+1389740730446	Delete element

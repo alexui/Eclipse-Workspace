@@ -1,0 +1,87 @@
+import java.util.LinkedHashMap;
+import java.util.Scanner;
+import java.util.Stack;
+
+
+public class ExpressionParser {
+	
+	private String e;
+	private class Operators{
+		
+		public LinkedHashMap<String, Integer> map;
+		
+		public Operators(){
+			
+			map = new LinkedHashMap<String,Integer>();
+			map.put("+",1);
+			map.put(2,"-");
+			map.put(3,"/");
+			map.put(4,"*");
+			map.put(5,"^");
+			map.put(6,"log");
+			map.put(6,"sin");
+			map.put(6,"cos");
+			map.put(6,"sqrt");
+			map.put(6,"- ");
+			map.put(7,"(");
+		}
+	}
+	private class Node{
+		
+		public String root;
+		public Node left;
+		public Node right;
+	}
+	
+	private Stack<Node> ResultStack;
+	private Stack<String> OperatorStack;
+	
+	private int searchForCharacter(String s,char c){
+		
+		int nr=0;
+		for(int i=0;i<s.length();i++){
+			if(s.charAt(i)==c)
+				nr++;
+			}
+		return nr;
+	}
+	
+	private boolean corectMinus(String s){
+		
+		int i=0;
+		while(s.charAt(i)==' ') i++;
+		if(s.charAt(i)=='-' && s.charAt(i+1)!=' ')
+			return false;
+		return true;
+	}
+	
+	public float eval(String expression) throws SyntacticException, EvaluatorException{
+		// do the magic
+		
+		e = expression;
+		String token;
+		
+		//verificarea numarului de paranteze
+		if(searchForCharacter(e, '(')!=searchForCharacter(e,')'))
+			throw new SyntacticException();
+		
+		
+		//folosirea incorecta a minusului unar
+		if(!corectMinus(e))		
+			throw new SyntacticException();
+		
+		ResultStack = new Stack<Node>();
+		OperatorStack = new Stack<String>();
+		Operators o = new Operators();
+		Scanner parse = new Scanner(e);
+		
+		if(e.charAt(0)=='-')
+			OperatorStack.push(o.map.)
+		
+		
+		
+		
+		return 0f;
+	}
+	
+}

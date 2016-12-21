@@ -1,0 +1,41 @@
+package Ex1;
+import java.util.Scanner;
+
+import org.junit.Assert;
+import org.junit.Before;
+
+
+public class Test {
+
+	public Zoo zoo;
+	
+	@Before
+	public void setup()
+	{
+		zoo = new Zoo();
+		zoo.addAnimal(new Animal("Cerb",1));
+		zoo.addAnimal(new Animal("Urs",2));
+		zoo.addAnimal(new Animal("Maimuta",3));
+	}
+	
+	@org.junit.Test
+	public void addAnimalTest(){
+		Animal a = new Animal("Elefant",3);
+		zoo.addAnimal(a);
+		
+		Assert.assertEquals(a,zoo.getAnimals().getLast());
+	}
+	
+	@org.junit.Test
+	public void testRemoveAnimal(){
+		
+		System.out.println("Which animal do you want to remove:");
+		Scanner s = new Scanner(System.in);
+		Animal a;
+		do{
+			System.out.print("animal: ");
+			a = new Animal(s.next(),s.nextInt());
+		}while(zoo.getAnimals().contains(a)==false);
+		s.close();
+	}
+}

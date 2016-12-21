@@ -1,0 +1,34 @@
+package Ex1;
+
+import java.util.LinkedList;
+
+public class Zoo {
+
+	private LinkedList<Animal> animals;
+	
+	public Zoo(){
+		animals = new LinkedList<Animal>();
+	}
+	
+	public void addAnimal(Animal a){
+		animals.addLast(a);
+	}
+	
+	public Animal removeAnimal(Animal a){
+		
+		if(animals.contains(a)){
+			animals.remove(a);
+			return a;}
+		else return null;
+	}
+	
+	public boolean areAnimals(){
+		if(animals.size()==0)
+			return false;
+		else return true;
+	}
+	
+	public LinkedList<Animal> getAnimals(){
+		return animals;		
+	}
+}

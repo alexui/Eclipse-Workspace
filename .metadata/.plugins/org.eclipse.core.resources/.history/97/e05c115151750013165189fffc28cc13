@@ -1,0 +1,36 @@
+import java.util.TreeMap;
+
+
+public class ExpressionParser {
+	
+
+	private class Operators{
+		
+		private TreeMap<Integer, String> operatori;
+		
+		public Operators(){
+			
+			operatori = new TreeMap<Integer,String>(new Cresc<Integer>());
+			operatori.put(1,"+");
+			operatori.put(2,"-");
+			operatori.put(3,"/");
+			operatori.put(4,"*");
+			operatori.put(5,"^");
+			operatori.put(6,"log");
+			operatori.put(6,"sin");
+			operatori.put(6,"cos");
+			operatori.put(6,"sqrt");
+			operatori.put(6,"- ");
+			operatori.put(7,"(");
+		}
+	}
+	
+	public float eval(String expression) throws SyntacticException, EvaluatorException{
+		// do the magic
+		
+		
+		
+		return 0f;
+	}
+	
+}

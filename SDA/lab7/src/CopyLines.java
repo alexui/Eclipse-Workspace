@@ -1,0 +1,36 @@
+import java.io.BufferedReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+
+public class CopyLines {
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader inputStream = null;
+        PrintWriter outputStream = null;
+
+        try {
+        	//InputStreamReader converteste sirul de biti System.in la sir de caractere
+            inputStream = new BufferedReader(new InputStreamReader(System.in)); 
+            outputStream = new PrintWriter(new FileWriter("characteroutput.txt"));
+
+            String l;
+         //   System.out.println("Insert: ");
+            while ((l = inputStream.readLine()) != null && l.matches("END")==false) {
+            	outputStream.print(':');
+                outputStream.println(l);
+                System.out.write(':');
+                System.out.println(l); 
+            }
+        } finally {
+            if (inputStream != null) {
+                inputStream.close();
+            }
+            if (outputStream != null) {
+                outputStream.close();
+            }
+        }
+    }
+}
+

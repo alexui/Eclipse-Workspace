@@ -1,0 +1,15 @@
+package ListeSimpluInlantuite;
+
+public class List {
+
+		private Info a;
+		private List urm;
+		
+		public List()
+		{
+			a = new Info();
+			urm=null;
+		}
+		
+		public void setInfo()
+}

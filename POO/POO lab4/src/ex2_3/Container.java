@@ -1,0 +1,15 @@
+package ex2_3; // container este un invoker pentru Command Pattern
+
+import ex1.Task;
+
+public interface Container {
+
+	public int size(); //numarul de taskuri din container
+	
+	public boolean isEmpty(); // verifica daca containerul este gol
+	
+	public void push(Task t); // introduce task in container
+	
+	public Task pop(); // extrage task din container
+	
+}

@@ -1,0 +1,185 @@
+package tema1;
+
+public class CreateRT {
+	
+	private RadixTree tree;
+	private int word_count=-1;
+	public final int NOT_FOUND=-1;
+	
+	public CreateRT(String FilePath)
+	{
+		String word;
+		FileParser textFile = new FileParser(FilePath);
+		tree=new RadixTree();
+		textFile.open();
+		while((word=textFile.getNextWord())!=null) // adauga in arbore fiecare cuvant
+		{
+			word_count++;
+			buildRadixTree(tree,word);
+		}
+	}
+	
+	private int checkForPrefix(String word1,String word2)
+	{
+		int i=-1;
+		while((i+1)<word1.length() && (i+1)<word2.length() && word1.charAt(i+1)==word2.charAt(i+1))
+			i++;
+		return i;
+	}
+	
+	
+	public boolean buildRadixTree(RadixTree rt, String key)
+
+	{
+		boolean val=true;
+		int pos=0;
+		if(rt.getUrm().length==0) // daca nu are succesori adauga key ca succesor
+		{
+			rt.addNod(key);
+			rt.getUrm()[0].setPos(word_count);
+			return true;
+		}
+		
+		int i,p=-1;
+		for(i=0;i<rt.getUrm().length;i++)
+			{
+			p=checkForPrefix(rt.getUrm()[i].getKey(),key);
+			if(p>=0) break;
+			// daca s-a gasit prefix se opreste cautarea
+			} // i reprezinta indexul succesorului al carui prefix coincide cu al cheii 
+		
+		
+		if(p==-1) //daca prefxul lui key nu corespunde cu nici un prefix al succesorilor adauga key ca succesor
+		{
+			rt.addNod(key);
+			rt.getUrm()[rt.getSub()-1].setPos(word_count);
+			return true;
+		}
+		
+		if(p>=0) // daca prefixul lui key corespunde cu a unui succesor 
+		{
+			if(key.equals(rt.getUrm()[i].getKey())) //daca cheyle coincid se returneaza false adica- nu s-a construit nimic
+			{									//s-a gasit key in arbore
+				return false;
+			}
+			
+			if(p+1==rt.getUrm()[i].getKey().length()) // daca prefixul lui key este in totalitate un succesor
+			{
+				if(rt.getUrm()[i].getUrm().length==0) //daca nu avem succesori pentru succesorul de fata
+				{
+					String word=rt.getUrm()[i].getKey();			//se creaza un nou arbore pornind de la succesorul curent
+					pos=rt.getUrm()[i].getPos();
+					rt.getUrm()[i]=new RadixTree();
+					rt.getUrm()[i].setKey(word.substring(0, p+1)); // seteaza prefix cumun la succesor
+					rt.getUrm()[i].setPos(pos);
+					val=buildRadixTree(rt.getUrm()[i],key.substring(p+1)); // sufixul va fi adaugat la arbore 
+					return val;
+				}
+				else
+					{
+					val=buildRadixTree(rt.getUrm()[i],key.substring(p+1)); //daca exista succesori se cauta pozitionarea sufixului
+					return val;
+					}
+			}
+			
+			if(key.equals(key.substring(0, p+1))) // daca prefixul succesorului este egal in totalitate cu key
+				{
+					String word=rt.getUrm()[i].getKey(); //se creaza un nou arbore pornind de la succesorul curent
+					pos=rt.getUrm()[i].getPos();
+					rt.getUrm()[i]=new RadixTree();
+					rt.getUrm()[i].setKey(key);
+					val=buildRadixTree(rt.getUrm()[i],word.substring(p+1)); // sufixul va fi adaugat la arbore 
+					
+					int aux=pos;  // interschimba pozitiile pe care au fost gasite cheile
+					rt.getUrm()[i].setPos(rt.getUrm()[i].getUrm()[0].getPos());
+					rt.getUrm()[i].getUrm()[0].setPos(aux);
+					return val;
+				}
+			
+			else //daca prefixul lui key nu este in totalitate un succesor si nici prefixul succesorului nu este egal in totalitate cu key
+			{
+				String word=rt.getUrm()[i].getKey(); //se pastreaza cheia sucesorului de fata
+				//pos=rt.getUrm()[i].getPos();
+				if(rt.getUrm()[i].getUrm().length==0) // daca succesorul nu are succesori
+				{
+					pos=rt.getUrm()[i].getPos();
+					rt.getUrm()[i]=new RadixTree();   //se creaza un nou arbore pornind de la succesorul curent
+					rt.getUrm()[i].setKey(word.substring(0, p+1));  // seteaza prefix cumun la succesor
+					val=buildRadixTree(rt.getUrm()[i],word.substring(p+1));  // se adauga la arbore sufixul cheilor
+					rt.getUrm()[i].getUrm()[0].setPos(pos); // se pastreza pozitia gasita pentru succesorul curent
+					val=buildRadixTree(rt.getUrm()[i],key.substring(p+1));
+					return val;
+				}
+				else // daca succesorul are succesori
+				{
+					RadixTree aux=rt.getUrm()[i];  // creaza nod auxiliar
+					aux.setKey(word.substring(p+1)); // nodul auxiliar are cheia - sufixul din succesor curent
+					rt.getUrm()[i]=new RadixTree();   //se creaza un nou arbore pornind de la succesorul curent
+					rt.getUrm()[i].setKey(word.substring(0, p+1)); // seteaza prefix cumun la succesor
+					rt.getUrm()[i].extendUrm();
+					rt.getUrm()[i].getUrm()[0]=aux; // se adauga in lista de succesori a succesorului curent nodul aux.
+					val=buildRadixTree(rt.getUrm()[i],key.substring(p+1)); //se adauga la arbore sufixul ceii de la succesor
+					return val;
+				}
+			}
+		}
+		return val;
+	}
+	
+	public void printRadixTree(RadixTree tree,int nr)
+	{
+		int i,j;
+		
+		for(i=0;i<tree.getSub();i++)
+		{
+			for(j=0;j<nr;j++)
+				System.out.print("\t");
+			System.out.println(tree.getUrm()[i].getKey());
+			if(tree.getUrm()[i].getSub()!=0)
+				printRadixTree(tree.getUrm()[i], nr+1);
+		}
+	}
+
+	public int[] search(RadixTree rt,String key)
+	{
+		if(rt.getUrm().length==0) 
+			return null;
+		
+		int i,p=-1;
+		for(i=0;i<rt.getUrm().length;i++)
+			{
+			p=checkForPrefix(rt.getUrm()[i].getKey(),key);
+			if(p>=0) break;
+			// daca s-a gasit prefix se opreste cautarea
+			} // i reprezinta indexul succesorului al carui prefix coincide cu al cheii 
+		
+		if(key.equals(key.substring(0, p+1))) //s-a gasit key in arbore 
+		{			
+			IntArray index = new IntArray();
+			return seek(rt.getUrm()[i],index);    //se cauta toti succesorii care incep cu prefixul key
+		}
+		
+		if(p==-1) //daca prefxul lui key nu corespunde cu nici un prefix al succesorilor adauga key ca succesor
+		{
+			return null;
+		}
+		
+		if(p>=0) // daca prefixul lui key corespunde cu a unui succesor 
+		{
+			return search(rt.getUrm()[i],key.substring(p+1));
+		}
+		
+		return null;
+
+	}
+	
+	private int[] seek(RadixTree nod,IntArray a)
+	{
+		
+	}
+	
+	public RadixTree getRadixTree()
+	{
+		return tree;
+	}
+}

@@ -1,0 +1,31 @@
+package Projectiles;
+
+import ProcessingManagers.TimeManager;
+import Screen.Screen;
+import Shapes.Point;
+import Shapes.Rectangle;
+
+public class SpiderShot extends SimpleShell{
+
+	public SpiderShot(Screen screen, int ref, TimeManager currentTime) {
+		super(screen, ref, currentTime);
+			this.shape=new Rectangle();
+	}
+
+	@Override
+	public void shoot(int dist, Point shooterPosition) {
+
+		
+	}
+	
+	@Override
+	protected void hitScreenAction(Point shooterPosition, int ref) {
+	
+	}
+	
+	protected void computeDistance(int id,TimeManager currentTime)
+	{
+		shapeChangingDist = 42 + (id*id*currentTime.getH()+id*currentTime.getMin()+currentTime.getSec())%42;
+	}
+	
+}

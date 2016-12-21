@@ -1,0 +1,83 @@
+package Alg_BMH;
+
+public class CreateRT {
+	
+	private RadixTree tree;
+	private int word_count;
+	
+	public CreateRT(String FilePath)
+	{
+		String word;
+		FileParser textFile = new FileParser(FilePath);
+		tree=new RadixTree();
+		textFile.open();
+		while((word=textFile.getNextWord())!=null) // adauga in arbore fiecare cuvant
+		{
+			word_count++;
+			addToTree(tree,word);
+		}
+	}
+	
+	private void addToTree(RadixTree rt, String key)
+	{
+		if(rt==null) return;
+		rt.setPos(word_count);
+				
+		if(rt.getUrm().length==0)
+		{
+			rt.addNod(key);
+			return;
+		}
+		
+		int i,p=-1;
+		for(i=0;i<rt.getUrm().length;i++)
+			{
+			p=checkForPrefix(rt.getUrm()[i].getKey(),key);
+			if(p>=0) break;
+			// daca s-a gasit prefix se opreste cautarea
+			}
+		System.out.println(i);
+		System.out.println(p);
+		if(p>=0)
+		{
+			if(p+1==rt.getUrm()[i].getKey().length())
+			{
+// getUrm returneaza vectorul de arbori		
+				rt.getUrm()[i].extendUrm();
+				rt.getUrm()[i] = new RadixTree(key.substring(p+1)); 
+			}
+			
+			else
+			{
+				System.out.println("length:"+rt.getUrm()[i].getUrm().length);
+
+				String word=rt.getUrm()[i].getKey();
+				rt.getUrm()[i].extendUrm();
+				rt.getUrm()[i].setKey(word.substring(0, p+1));
+			//	rt.getUrm()[i].extendUrm();
+				System.out.println("length:"+rt.getUrm()[i].getUrm().length);
+
+				rt.getUrm()[i+1]= new RadixTree(word.substring(p+1),key.substring(p+1));
+			}
+		}
+		else
+		{
+			rt.addNod(key);
+		}
+		
+	}
+	
+	private int checkForPrefix(String word1,String word2)
+	{
+		System.out.println(word1+" "+word2);
+		int i=-1;
+		while((i+1)<word1.length() && (i+1)<word2.length() && word1.charAt(i+1)==word2.charAt(i+1))
+			i++;
+		return i;
+	}
+	
+	public RadixTree getRadixTree()
+	{
+		return tree;
+	}
+}

@@ -1,0 +1,6 @@
+package Ex2;
+
+public class GeometricFormsTest {
+
+	Forms a = new GeometricForm(rectangle);
+}

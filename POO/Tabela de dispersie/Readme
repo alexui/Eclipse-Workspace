@@ -1,0 +1,101 @@
+Clasa MyHasmapImpl<K,V> 
+	- Clasa pentru o tabela de dispersie asociativa ce implementeaza interfata MyHashMap.
+	-contine:
+		o lista de bucket-uri cu elemente de tip myBucket.
+		-metode :
+		
+		get(K key) - Obtine valoarea asociata cheii key.
+		put(K key, V value) - Adauga o asociere cheie-valoare. Returneaza valoarea anterioara asociata cheii key SAU null daca cheia nu exista.
+		remove(K key) - Inlatura asocierea. Returneaza valoarea asociata cu cheia key SAU null daca cheia nu exista.
+		size() - Intoarce dimensiunea tabelei.
+		getBuckets() - Intoarce lista de bucket-uri din tabela.
+		getHashcode(K key) - Metoda ce calculeaza HashCode-ul pentru cheia specificata.
+		translate(int hashcode) - Metoda ce calculeaza HashCode-ul pentru cheia specificata. Metoda ce translateaza HashCode-ul. Face ca o cheie sa aiba un HashCode care sa nu depaseasca numarul maxim de bucket-uri.
+		
+		-clase interne: 
+		
+		clasa myBucket -Bucket al tabelei de dispersie implementeaza interfata MyHashMap.Bucket.
+			contine:
+				o constanta KEY_NOT_FOUND ce ne informeaza ca nu s-a gasit cheie in bucket
+				o lista de intrari cu elemete de tip myEntry.
+				-metode:
+				
+				addEntry(myEntry entry) - Adauga o intrare in bucket.
+				containskey(K key) - Cauta intrare cu cheie specificata. Returneaza pozitia in lista de intrari pe care s-a gasit intrarea cu cheia cautata.
+				getEntries() - Intoarce lista de intrari continute de acest bucket.
+				
+		clasa myEntry - Intrare in tabela de dispersie (asociere cheie-valoare) implementeaza interfata link MyHashMap.Entry.
+			contine:
+				o cheie te tip K
+				o valoare de tip V
+				-metode:
+				
+				getKey() - Intoarce cheia intrarii.
+				getValue() - Intoarce valoarea intrarii.
+				setValue(V value) -  Setter pentru valoare.
+				
+Cerinta 2:
+
+Clasa MainClass
+	-creeaza doua instante parametrizate a clasei MyHasMapImpl. Prima instanta este o tablea de dispersie cu obiecte de tip Sudent iar a 
+	doua cu elemente de tip LazyStudent.
+	-Se instantiaza clasele speciale de test (TesterForStudent si TesterForLazyStudent)pentru a se testa dispunerea obiectelor in tablea de dispersie si pentru a evalua timpul de 
+	cautare in aceasta. 
+	Documentatia claselor speciale de test se gaseste in javadoc.
+	-pentru fiecare instanta de mai sus se apeleaza metoda 'run' din clasele de test.
+	
+	Observatii:
+	Modul de functionare al metodei run din clasa TesterForStudent:
+		-Se creeaza o tabela de dispersie cu obiecte de tip Student.
+		-Se introduc un numar >= 1000 de instante a clasei Student intr-o lista numita 'myInstances'.
+			Instantele au campurile 'nume' si 'varsta' generate aleator. 'nume' contine doar litere mici si 'varsta' intregi din [17,27]
+		-Se creeaza tabela de dispersie pe baza obiectelor de mai sus astfel:
+			-pentru fiecare obiect se calculeaza un HashCode dupa formula din metoda 'hashcode' din clasa 'Student'.
+			-hashcode-ul este translatat asfel incat sa nu se depaseasca un anumit numar 'number_of_buckets' , de bucket-uri.
+			-Bucket-ul de pe pozitia [hashcode translatat] din vectorul de bucket-uri va primi intrarea cu obiectul de introdus.
+				metoda 'addEntry'
+		-Se aleg din lista 'myInstances', aleatoriu ,un numar >=100 de obiecte de extras din tabela de dispersie. Obiectele de tip 'Student' sunt salvate in lista 
+		'whatToget'
+		-Pentru fiecare element al listei 'whatToGet',cautam in tabela de dispersie cheia , si incercam sa extragem valoarea astfel:
+				-se obtine hascode-ul cheii dupa metoda 'hashcode' din clasa 'Student' - se calculeaza in functie de 'nume' si 'varsta'.
+				-se translateaza hashcode-ul.
+				-se acceseaza bucketul de pe pozitia [hashcode translatat] din vectorul de bucket-uri.
+				-daca s-a gasit bucket se acceseaza lista de intrari si se cauta in aceasta vloarea asociata cheii.
+				-daca s-a gasit cheia in lista de intrari intoarce valoarea.
+				-se calculeaza timpul in care s- axtras valoarea.   
+				
+		Modul de functionare al metodei run din clasa TesterForLazyStudent:
+		-Se creeaza o tabela de dispersie cu obiecte de tip LazyStudent.
+		-Se introduc un numar >= 1000 de instante a clasei LazyStudent intr-o lista numita 'myInstances'.
+			Instantele au campurile 'nume' si 'varsta' generate aleator. 'nume' contine doar litere mici si 'varsta' intregi din [17,27]
+		-Se creeaza tabela de dispersie pe baza obiectelor de mai sus astfel:
+			-pentru fiecare obiect se calculeaza un HashCode dupa formula din metoda 'hashcode' din clasa 'LazyStudent'.
+			-metoda 'hashcode' din clasa 'LazyStudent' intoarce o constanta.
+			OBS: toate obiectele introduse in tabela de dispersie au acelasi hashcode.
+			-hashcode-ul este translatat asfel incat sa nu se depaseasca un anumit numar 'number_of_buckets' , de bucket-uri.
+			-Bucket-ul de pe pozitia [hashcode translatat] din vectorul de bucket-uri va primi intrarea cu obiectul de introdus.
+				metoda 'addEntry'
+		-Se aleg din lista 'myInstances', aleatoriu ,un numar >=100 de obiecte de extras din tabela de dispersie. Obiectele de tip 'LazyStudent' sunt salvate in lista 
+		'whatToget'
+		-Pentru fiecare element al listei 'whatToGet',cautam in tabela de dispersie cheia , si incercam sa extragem valoarea astfel:
+				-se obtine hascode-ul cheii dupa metoda 'hashcode' din clasa 'LazyStudent' - se obtine o constanta.
+				-se translateaza hashcode-ul.
+				OBS: orice obiect cautat va avea un hashcode comum cu a celor din tabela de dispersie.
+					toate obiectele din tabela de dispersie au un hashcode comun.
+				-se acceseaza bucketul de pe pozitia [hashcode translatat] din vectorul de bucket-uri.
+				-daca s-a gasit bucket (si sigur s-a gasit daca in tabela exista cel putin un element) 
+					se acceseaza lista de intrari si se cauta in aceasta vloarea asociata cheii.
+				-daca s-a gasit cheia in lista de intrari intoarce valoarea.
+				-se calculeaza timpul in care s- axtras valoarea. 
+				
+		OBS: in primul caz se pot obtine mai multe liste (intre 1 si number_of_buckets) in care se poate face cautarea. 
+			in a doulea caz exista o singura lista in care se face cautarea datorita unui hashcode constant pentru fiecare element nou introdus in tabela de dispersie.
+				
+				Astfel inaintea unei cautari se alege lista in care se va face cautarea in functie de hashcode-ul translatat:
+					- in primul caz se pot obtin prin intermediul tabelei mai multe liste de dimensiuni mai mici decat lista din al doilea caz.
+						Concluzie: cautarea dureaza mai putin.
+				Timpul de cautare scade cu cat vectorul de bucket-uri este mai mare, deci cu cat exista mai multe posibilitati de hashcode.
+				
+				Experimental se creeaza 1000 de instante si se cauta 100 de chei.
+					timp de cautare pentru primul caz: aprox 5 milisecunde.
+					timp de cautare pentru al doilea caz: [15,25] milisecunde 

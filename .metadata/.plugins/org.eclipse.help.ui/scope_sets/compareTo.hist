@@ -1,0 +1,4 @@
+#Sun Jun 23 20:46:51 EEST 2013
+__DEFAULT__=false
+org.eclipse.help.ui.localSearch.master=true
+expression=compareTo

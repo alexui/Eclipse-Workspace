@@ -1,0 +1,282 @@
+{
+  "C:\\Program Files\\Java\\jre7\\lib\\rt.jar": {
+    "location": "C:\\Program Files\\Java\\jre7\\lib\\rt.jar",
+    "status": "UNRESOLVED",
+    "error": "No call model found for \u0027C:\\Program Files\\Java\\jre7\\lib\\rt.jar\u0027. Neither fingerprint \u0027442144fb304e0895e42527f0d796dc6a070afc49\u0027 nor symbolic name \u0027jre\u0027 are known."
+  },
+  "E:\\Eclipse Workspace\\Lab4\\src": {
+    "location": "E:\\Eclipse Workspace\\Lab4\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\Lab4\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\Classes \u0026 objects\\src": {
+    "location": "E:\\Eclipse Workspace\\Classes \u0026 objects\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\Classes \u0026 objects\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\lab8-interfaces\\src": {
+    "location": "E:\\Eclipse Workspace\\lab8-interfaces\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\lab8-interfaces\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\lab10\\src": {
+    "location": "E:\\Eclipse Workspace\\lab10\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\lab10\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\examen\\src": {
+    "location": "E:\\Eclipse Workspace\\examen\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\examen\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\Agenda\\src": {
+    "location": "E:\\Eclipse Workspace\\Agenda\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\Agenda\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\POO lab1\\src": {
+    "location": "E:\\Eclipse Workspace\\POO lab1\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\POO lab1\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\SmartArrayEx\\src": {
+    "location": "E:\\Eclipse Workspace\\SmartArrayEx\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\SmartArrayEx\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\Curs2\\src": {
+    "location": "E:\\Eclipse Workspace\\Curs2\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\Curs2\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\AnalizaAlgoritmilor\\src": {
+    "location": "E:\\Eclipse Workspace\\AnalizaAlgoritmilor\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\AnalizaAlgoritmilor\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\POO lab2\\src": {
+    "location": "E:\\Eclipse Workspace\\POO lab2\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\POO lab2\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\POO lab3\\src": {
+    "location": "E:\\Eclipse Workspace\\POO lab3\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\POO lab3\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\Tema1 POO\\src": {
+    "location": "E:\\Eclipse Workspace\\Tema1 POO\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\Tema1 POO\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\POO lab4\\src": {
+    "location": "E:\\Eclipse Workspace\\POO lab4\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\POO lab4\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\POO lab5\\src": {
+    "location": "E:\\Eclipse Workspace\\POO lab5\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\POO lab5\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\FunWithBullets\\src": {
+    "location": "E:\\Eclipse Workspace\\FunWithBullets\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\FunWithBullets\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\POO lab exceptii\\src": {
+    "location": "E:\\Eclipse Workspace\\POO lab exceptii\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\POO lab exceptii\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\POO lab generics\\src": {
+    "location": "E:\\Eclipse Workspace\\POO lab generics\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\POO lab generics\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\Tabela de dispersie\\src": {
+    "location": "E:\\Eclipse Workspace\\Tabela de dispersie\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\Tabela de dispersie\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\POO lab colectii\\src": {
+    "location": "E:\\Eclipse Workspace\\POO lab colectii\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\POO lab colectii\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\Calculator de buzunar\\src": {
+    "location": "E:\\Eclipse Workspace\\Calculator de buzunar\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\Calculator de buzunar\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\calculator de buzunar tema4\\src": {
+    "location": "E:\\Eclipse Workspace\\calculator de buzunar tema4\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\calculator de buzunar tema4\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\InputOutput\\src": {
+    "location": "E:\\Eclipse Workspace\\InputOutput\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\InputOutput\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\Radu\\src": {
+    "location": "E:\\Eclipse Workspace\\Radu\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\Radu\\src\u0027. Skipped."
+  },
+  "D:\\Documente\\POO\\Junit\\junit-4.10.jar": {
+    "location": "D:\\Documente\\POO\\Junit\\junit-4.10.jar",
+    "status": "UNRESOLVED",
+    "error": "No call model found for \u0027D:\\Documente\\POO\\Junit\\junit-4.10.jar\u0027. Neither fingerprint \u0027e4f1766ce7404a08f45d859fb9c226fc9e41a861\u0027 nor symbolic name \u0027junit-4.10\u0027 are known."
+  },
+  "E:\\Eclipse Workspace\\POO GUI Programming\\src": {
+    "location": "E:\\Eclipse Workspace\\POO GUI Programming\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\POO GUI Programming\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\ProiectareaAlgoritmilor\\p1\\src": {
+    "location": "E:\\Eclipse Workspace\\ProiectareaAlgoritmilor\\p1\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\ProiectareaAlgoritmilor\\p1\\src\u0027. Skipped."
+  },
+  "D:\\Documente\\Proiectarea algoritmilor\\Java\\p2\\p2.3\\src": {
+    "location": "D:\\Documente\\Proiectarea algoritmilor\\Java\\p2\\p2.3\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027D:\\Documente\\Proiectarea algoritmilor\\Java\\p2\\p2.3\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\PA-Lab01-p4\\src": {
+    "location": "E:\\Eclipse Workspace\\PA-Lab01-p4\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\PA-Lab01-p4\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\POO\\calculator de buzunar tema4\\src": {
+    "location": "E:\\Eclipse Workspace\\POO\\calculator de buzunar tema4\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\POO\\calculator de buzunar tema4\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\POO\\Calculator de buzunar\\src": {
+    "location": "E:\\Eclipse Workspace\\POO\\Calculator de buzunar\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\POO\\Calculator de buzunar\\src\u0027. Skipped."
+  },
+  "D:\\Documente\\Proiectarea algoritmilor\\lab3\\Java\\p1\\src": {
+    "location": "D:\\Documente\\Proiectarea algoritmilor\\lab3\\Java\\p1\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027D:\\Documente\\Proiectarea algoritmilor\\lab3\\Java\\p1\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\PA - Tema1\\src": {
+    "location": "E:\\Eclipse Workspace\\PA - Tema1\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\PA - Tema1\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\PA-Lab03-p2\\src": {
+    "location": "E:\\Eclipse Workspace\\PA-Lab03-p2\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\PA-Lab03-p2\\src\u0027. Skipped."
+  },
+  "D:\\Documente\\Proiectarea algoritmilor\\lab3\\Java\\p3\\src": {
+    "location": "D:\\Documente\\Proiectarea algoritmilor\\lab3\\Java\\p3\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027D:\\Documente\\Proiectarea algoritmilor\\lab3\\Java\\p3\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\PA-Lab04-p1\\src": {
+    "location": "E:\\Eclipse Workspace\\PA-Lab04-p1\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\PA-Lab04-p1\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\PA-Lab05-p1\\src": {
+    "location": "E:\\Eclipse Workspace\\PA-Lab05-p1\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\PA-Lab05-p1\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\POO\\Curs2\\src": {
+    "location": "E:\\Eclipse Workspace\\POO\\Curs2\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\POO\\Curs2\\src\u0027. Skipped."
+  },
+  "D:\\Documente\\Proiectarea algoritmilor\\lab06\\p2\\src": {
+    "location": "D:\\Documente\\Proiectarea algoritmilor\\lab06\\p2\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027D:\\Documente\\Proiectarea algoritmilor\\lab06\\p2\\src\u0027. Skipped."
+  },
+  "D:\\Documente\\Proiectarea algoritmilor\\lab07\\Java\\lab_ctc\\src": {
+    "location": "D:\\Documente\\Proiectarea algoritmilor\\lab07\\Java\\lab_ctc\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027D:\\Documente\\Proiectarea algoritmilor\\lab07\\Java\\lab_ctc\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\PA-Tema2\\src": {
+    "location": "E:\\Eclipse Workspace\\PA-Tema2\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\PA-Tema2\\src\u0027. Skipped."
+  },
+  "D:\\Documente\\Proiectarea algoritmilor\\lab08\\Java\\src": {
+    "location": "D:\\Documente\\Proiectarea algoritmilor\\lab08\\Java\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027D:\\Documente\\Proiectarea algoritmilor\\lab08\\Java\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\PA-Lab09\\src": {
+    "location": "E:\\Eclipse Workspace\\PA-Lab09\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\PA-Lab09\\src\u0027. Skipped."
+  },
+  "D:\\Documente\\Paradigme de programare\\tema2-pp-schelet\\tema2-pp-schelet\\src": {
+    "location": "D:\\Documente\\Paradigme de programare\\tema2-pp-schelet\\tema2-pp-schelet\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027D:\\Documente\\Paradigme de programare\\tema2-pp-schelet\\tema2-pp-schelet\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\PA-lab10\\src": {
+    "location": "E:\\Eclipse Workspace\\PA-lab10\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\PA-lab10\\src\u0027. Skipped."
+  },
+  "D:\\Documente\\Proiectarea algoritmilor\\lab11\\Java\\p1\\src": {
+    "location": "D:\\Documente\\Proiectarea algoritmilor\\lab11\\Java\\p1\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027D:\\Documente\\Proiectarea algoritmilor\\lab11\\Java\\p1\\src\u0027. Skipped."
+  },
+  "D:\\Documente\\Proiectarea algoritmilor\\lab11\\Java\\p2\\src": {
+    "location": "D:\\Documente\\Proiectarea algoritmilor\\lab11\\Java\\p2\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027D:\\Documente\\Proiectarea algoritmilor\\lab11\\Java\\p2\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\PA-Lab12KMeans\\src": {
+    "location": "E:\\Eclipse Workspace\\PA-Lab12KMeans\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\PA-Lab12KMeans\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\APD\\APDL3\\src": {
+    "location": "E:\\Eclipse Workspace\\APD\\APDL3\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\APD\\APDL3\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\LAB5APD\\src": {
+    "location": "E:\\Eclipse Workspace\\LAB5APD\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\LAB5APD\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\MapReduce\\src": {
+    "location": "E:\\Eclipse Workspace\\MapReduce\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\MapReduce\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\APDL6\\src": {
+    "location": "E:\\Eclipse Workspace\\APDL6\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\APDL6\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\MapReduce\\MapReduce\\src": {
+    "location": "E:\\Eclipse Workspace\\MapReduce\\MapReduce\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\MapReduce\\MapReduce\\src\u0027. Skipped."
+  },
+  "E:\\Google Drive\\IP\\src": {
+    "location": "E:\\Google Drive\\IP\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Google Drive\\IP\\src\u0027. Skipped."
+  },
+  "E:\\Google Drive\\IMClient\\src": {
+    "location": "E:\\Google Drive\\IMClient\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Google Drive\\IMClient\\src\u0027. Skipped."
+  }
+}

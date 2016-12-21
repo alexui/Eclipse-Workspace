@@ -1,0 +1,5 @@
+package Clase_abstraca_si_interfete;
+
+public class PrintMessege implements Task{
+
+}

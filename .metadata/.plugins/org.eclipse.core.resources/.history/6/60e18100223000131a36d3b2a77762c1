@@ -1,0 +1,19 @@
+import java.util.*;
+
+
+public class SmartArrayRun {
+	
+	public static void main(String args[])
+	{
+		int i,n;
+		int[] M=new int[20];
+		Random r = new Random();
+		//n=(int)(Math.random()*20);
+		n=r.nextInt(20-10+1)+10;
+		System.out.print(n);
+		for(i=0;i<n;i++)
+			M[i]=r.nextInt(50);
+		//SmartArray a = new SmartArray(M);
+	}
+
+}

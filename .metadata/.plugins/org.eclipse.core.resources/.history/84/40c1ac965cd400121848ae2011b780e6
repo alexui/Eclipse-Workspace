@@ -1,0 +1,8 @@
+
+public class Stiva {
+	
+	private int indicator;
+	private int[] Stiva = new int[50];
+	
+
+}

@@ -1,0 +1,4 @@
+
+public interface Observer{
+	void notifyEvent(Event e);
+}

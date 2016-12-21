@@ -1,0 +1,46 @@
+
+public class SmartArray {
+	
+	private int[] IntString;
+	private int nElems;
+	
+	public void GetSmartArray()
+	{
+		int i;
+		for(i=0;i<nElms;i++)
+		{ System.out.printf("%d,",IntString[i]);}
+	}
+
+	public SmartArray(int[] M)
+	{
+		nElems=M.length;
+		System.arraycopy(IntString, 0, M, 0, nElems);
+	}
+	
+	public void Add(int element)
+	{
+		IntString[nElems]=element;
+		nElems++;
+	}
+	
+	private void MoveToLeft(int i)
+	{
+		for(;i<(nElems-1);i++)
+		{
+			IntString[i]=IntString[i+1];
+		}
+		nElems--;
+	}
+	
+	public void Delete(int element)
+	{
+		int i;
+		for(i=0;i<nElems;i++)
+		{
+			if(IntString[i]==element)
+			{
+				MoveToLeft(i);
+			}
+		}
+	}
+}

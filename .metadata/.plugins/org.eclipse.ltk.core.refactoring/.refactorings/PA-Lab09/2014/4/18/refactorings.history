@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename field &apos;succs&apos; in &apos;Node&apos; to &apos;childs&apos;&#x0D;&#x0A;- Original project: &apos;PA-Lab09&apos;&#x0D;&#x0A;- Original element: &apos;Node.succs&apos;&#x0D;&#x0A;- Renamed element: &apos;Node.childs&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="false" description="Rename field &apos;succs&apos;" flags="589826" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/src&lt;{Node.java[Node^succs" name="childs" references="true" setter="false" stamp="1398714648138" textual="false" version="1.0"/>
+</session>

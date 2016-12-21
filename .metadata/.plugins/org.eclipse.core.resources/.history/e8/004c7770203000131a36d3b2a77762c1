@@ -1,0 +1,14 @@
+import java.math.*;
+
+
+public class SmartArrayRun {
+	
+	public static void main(String args[])
+	{
+		int i,n;
+		n=Random()*20;
+		for(i=0;i<)
+		SmartArray a = new SmartArray(M);
+	}
+
+}

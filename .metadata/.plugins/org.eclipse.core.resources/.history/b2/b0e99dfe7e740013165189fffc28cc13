@@ -1,0 +1,79 @@
+package Ex1;
+import org.junit.Assert;
+import org.junit.Before;
+import java.io.IOException;
+import java.util.Scanner;
+
+import org.junit.Assert;
+import org.junit.Before;
+
+
+public class Test {
+
+	public Zoo zoo;
+	
+	@Before
+	public void setup()
+	{
+		zoo = new Zoo();
+		zoo.addAnimal(new Animal("Cerb",1));
+		zoo.addAnimal(new Animal("Urs",2));
+		zoo.addAnimal(new Animal("Maimuta",3));
+		System.out.println(zoo.getAnimals().toString());
+	}
+	
+	@org.junit.Test
+	public void addAnimalTest(){
+		System.out.println("\nTest 1\n");
+		Animal a = new Animal("Elefant",3);
+		zoo.addAnimal(a);
+		
+		Assert.assertEquals(a,zoo.getAnimals().get(zoo.getAnimals().size()-1));
+	}
+	
+	@org.junit.Test
+	public void testRemoveAnimal() throws IOException{
+		
+		System.out.println("\nTest 2\n");
+		System.out.println("Animals:");
+		for(Animal x : zoo.getAnimals()){
+			System.out.print(x.hashCode()+" ");
+		}
+		System.out.println();
+		
+		System.out.println("Which animal do you want to remove? :"); // se verifica existenta obiectului de tip animal
+		Scanner in = new Scanner(System.in);
+		Animal a;
+		do{
+			System.out.print("animal: ");
+			a = new Animal(String.valueOf(in.next()),Integer.valueOf(in.nextInt()));
+			System.out.println(a);
+		}while(!zoo.getAnimals().contains(a));
+		
+		in.close();
+		Assert.assertTrue(zoo.removeAnimal(a).equals(a));
+	}
+	
+	@org.junit.Test
+	public void testAreAnimalsInZoo(){
+		
+		System.out.println("\nTest 3\n");
+
+		if(!zoo.areAnimals())
+			Assert.fail();
+	}
+	
+	@org.junit.Test
+	public void testGetAnimals(){
+		
+		System.out.println("\nTest 4\n");
+
+		Animal a1 = new Animal("Tigru",5);
+		Animal a2 = new Animal("Leu",6);
+		zoo.addAnimal(a1);
+		zoo.addAnimal(a2);
+		int size = zoo.getAnimals().size();
+		
+		Assert.assertFalse(!(zoo.getAnimals().get(size-1).equals(a2) && zoo.getAnimals().get(size-2).equals(a1)));
+	}
+}

@@ -1,0 +1,7 @@
+package ListeSimpluInlantuite;
+
+public class ListRun {
+
+	List list = new List();
+	public static void main(String args[])
+}

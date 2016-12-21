@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;grid&apos; in &apos;CalculatorFrame.CalculatorFrame()&apos; to &apos;grid1&apos;&#x0D;&#x0A;- Original project: &apos;calculator de buzunar tema4&apos;&#x0D;&#x0A;- Original element: &apos;CalculatorFrame.CalculatorFrame().grid&apos;&#x0D;&#x0A;- Renamed element: &apos;grid&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;grid&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;{CalculatorFrame.java[CalculatorFrame~CalculatorFrame@grid!1882!1933!1889!1892!QJPanel;!0!false" name="grid1" references="true" stamp="1392488654002" version="1.0"/>
+</session>

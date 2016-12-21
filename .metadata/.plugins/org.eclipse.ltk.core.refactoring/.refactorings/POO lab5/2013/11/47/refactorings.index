@@ -1,0 +1,11 @@
+1384808944754	Rename type 'Test'
+1384880332374	Delete element
+1385059540564	Copy compilation unit
+1385138101809	Delete element
+1385141498148	Encapsulate field 'added'
+1385141530922	Encapsulate field 'removed'
+1385144428353	Delete element
+1385144530240	Infer generic type arguments
+1385144546222	Infer generic type arguments
+1385149434171	Rename type 'ListOfObjects'
+1385149501048	Copy compilation unit

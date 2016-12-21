@@ -1,0 +1,18 @@
+
+public class SmartArray {
+	
+	private int[] IntString;
+	private int nElems;
+
+	public SmartArray(int[] M)
+	{
+		nElems=M.length;
+		System.arraycopy(IntString, 0, M, 0, nElems);
+	}
+	
+	public void Add(int element)
+	{
+		M[nElems]=element;
+		nElems++;
+	}
+}

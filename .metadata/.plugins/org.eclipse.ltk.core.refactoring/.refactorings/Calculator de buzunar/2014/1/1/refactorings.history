@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename field &apos;operatori&apos; in &apos;ExpressionParser.Operators&apos; to &apos;map&apos;&#x0D;&#x0A;- Original project: &apos;Calculator de buzunar&apos;&#x0D;&#x0A;- Original element: &apos;ExpressionParser.Operators.operatori&apos;&#x0D;&#x0A;- Renamed element: &apos;ExpressionParser.Operators.map&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="false" description="Rename field &apos;operatori&apos;" flags="589830" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/src&lt;{ExpressionParser.java[ExpressionParser[Operators^operatori" name="map" references="true" setter="false" stamp="1388847782963" textual="false" version="1.0"/>
+</session>

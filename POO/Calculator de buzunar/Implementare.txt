@@ -1,0 +1,160 @@
+BUDAU ALEXANDRU
+Calculator Java
+
+Clasa ExpressionParser
+ -clasa se ocupa cu calculul unei expresii matematice 
+ -contine un numar de clase interne
+ -contine instante ale altor clase din default package 
+ 
+ Clase interne :
+ 	-BinaryOperators
+	 	 * clasa contine un map se asociaza fiecarui operator binar  gradul de prioritate -> + are prioritatea cea mai mare
+	 	 * map are operatorii: + - * / ^ 
+ 	-UnaryOperators
+ 		* are o lista ce contine siruri de caractere ce descriu operatori unari
+ 		* lista se initializeaza cu sin,cos,log,sqrt
+ 	-CorrectSyntax implementeaza Observer
+ 		* clasa de tip observator, verifica corectitudinea sintactica a expresiei
+	 	* contine o lista de token-uri posibile 
+	 	* cand observatorul este notificat se verifica daca token-ul curent face parte din lista token-urilor posibile
+	 	*	-daca nu se lanseaza exceptie sintactica
+	 	*	-daca da se actualizeaza lista de token-uri posibile
+	 	* o expresie poate sa inceapa cu un operand, o paranteza deschisa sau un operator unar
+	 	
+	 	metoda notifyEvent
+	 		 * se actualizeaza lista de token-uri posibile:
+			 * -dupa paranteza deschisa poate urma operator binar, sau paranteza inchisa
+			 * -dupa operand poate urma operator binar sau paranteza inchisa
+			 * -dupa operator binar poate urma operator unar, paranteza deschisa sau operand
+			 * -dupa paranteza inchisa poate urma operator binar sau paranteza inchisa
+			 * -dupa operator unar poate urma paranteza inchisa sau operator binar
+			 * -daca token-ul nu corespunde nici unuia din cazuri estelansata o exceptie sintactica
+	-CreateTree
+		* clasa observabila, se ocupa de parsarea expresiei si creerea arborelui
+	 	* utilizeaza un observator care este notificat la citirea fiecarui token
+	 	* pentru crearea arborelui se utilizeaza o stiva de noduri - rezultat si o stiva de noduri - operator
+	 	* root - nodul de la care porneste constructia arborelui
+	    * la fiecare apelare a constructorului se va crea un nou observator - util pentru recursivitate
+	    
+	    metoda build
+	     * metoda construieste arborele 
+		 * arunca SyntacticException daca observatorul identifica o inconvenienta sintactica
+		 * inainte de a incepe parsarea se verifica daca numarul parantezelor deschise este egal cu numarul parantezelor inchise
+		 * se verifica folosirea corecta a minusului
+		 * dupa verificarea minusului unar si parsarea unui token se redimensioneaza expresia
+		 
+		 *Algoritm de parsare a expresiei si constructie a arborelui
+		 	cat timp in expresie exista token-uri (operatori,oeranzi sau paranteze)
+		 		salveaza token
+		 		redimensioneaza expresie
+		 		observatorul pentru sintaxa corecta este notificat
+		 		verifica daca token-ul este operator,operand sau paranteza deschisa
+		 		se verifica urmatoarele cazuri
+		 			caz operator unar
+		 				caz special pentru un singur operator unar fara argument -> exceptie
+		 				caz special pentru paranteza - daca nu exista ->exceptie
+		 				extrage expresia din interiorul parantezelor si numara perechile de paranteze - se retin in variabila -pairs-
+						se creaza un nou nod cu un singur descendent avand ca radacina operatorul unar
+						radacina noului arbore este salvata in stiva de noduri
+						se parseaza in continuare pana la inchiderea parantezelor
+							cand se intalneste paranteza inchisa variabila pairs scade cu 1
+					caz paranteza deschisa
+						extrage expresia din interiorul parantezelor si numara perechile de paranteze - se retin in  -pairs-		 					
+	 					se creaza un nou arbore radacina noului arbore este salvata in stiva de noduri
+ 						se parseaza in continuare pana la inchiderea parantezelor
+ 							cand se intalneste paranteza inchisa variabila pairs scade cu 1
+ 					caz operand
+ 						se creaza nod fara descendenti avand ca radacina operandul
+ 					caz operator binar
+ 						daca stiva de operatori este goala se introduce operator
+ 						daca stiva de operatori nu este goala
+ 							se compara prioritatea operatorului curent cu prioritatea ultimului element din stiva 
+ 								daca operatorul nou este mai prioritar se introduce in stiva
+ 								altel se extrag pe rand cate doua noduri si cate un operator pentru a se crea un nou nod avand:
+										-doi descendenti
+										-radacina: operatorul extras ultima data
+									cat timp operatorul ramas ultim dupa extragere este mai putin sau la fel de prioritar ca operatorul curent
+										Pentru cazurile in care avem - si / exista un caz special
+										Odata ce a aparut semnul -,daca semnul urmator este - acesta va deveni + 1-2-3 devin 1-(2+3)
+										Odata ce a aparut semnul /,daca semnul urmator este / acesta va deveni * 1/2/3 devin 1/(2*3)
+									se actualizeaza ultimul element din stiva
+			pentru crearea arborelui stiva de operatori trebuie sa ramana goala iar stiva de noduri trebuie sa raman doar cu un nod:
+			 -radacina
+			se extrag doua noduri din stiva de noduri, un operator din stiva de operatori
+			se creaza un nou nod avand ca descendenti cele doua noduri si radacina operatorul
+				Pentru cazurile in care avem - si / exista un caz special
+				Odata ce a aparut semnul -,daca in stiva se mai gaseste - neintrerupt de + acesta va deveni + 1-2-3 devin 1-(2+3)
+				Odata ce a aparut semnul /,daca semnul urmator este / acesta va deveni * 1/2/3 devin 1/(2*3)
+			radacina este salvata
+
+		metoda addObserver
+			* adauga observator (se actualizeaza observator curent)
+			
+		metoda 	removeObserver
+			* elimina observator 
+		
+		metoda getRoot
+			* apeleaza metoda build
+			* returneaza radacina arborelui format prin parsarea expresiei
+									
+		metoda searchForCharacter
+		 	*cauta caracter intr-un sir si returneaza pozitia pe care s-a gasit
+		 	
+		metoda testCorrectMinus
+			* returneaza true daca minusul unar este folosit corect
+		 	* minusul unar trebuie sa fie despartit cu un spatiu de un operator unar : sin, cos, log, sqrt
+		
+		metoda testTokenType
+			* returneaza un element din enum-ul TokenType corespunzator token-ului transmis ca parametru
+			
+	metoda calculator
+		* calculeaza o expresie de forma [operand] [operator] [operand]
+		* calculul incepe din nodul transmis ca parametru
+		* recursiva - se opreste cand [operand]-stanga si [operand]-dreapta au valoarea null
+		* returneaza radacina arborelui in care se va face calculul expresiei
+		* aceasta metoda creaza un obiect de tip Compute care este un vizitator, acesta fiind acceptat de fiecare nod al arborelui 
+		
+	metoda eval
+		* Aceasta metoda primeste ca argument expresia ce trebuie parsata si intoarce rezultatul acesteia.
+		-creaza o instanta a clasei CreateTree
+		-se obtine nodul radacina din aceasta instanta
+		-se apeleaza metoda calculator pentru calculul expresiei dispuse pe arbore
+				
+				
+Enum TokenType
+-enum ce contine constante care definesc tipurile de token-uri
+	OPERATOR_BINAR,
+	OPERATOR_UNAR,
+	OPERAND,
+	LEFTPARANTHESES,
+	RIGHTPARANTHESES
+
+Clasa abstracta NodeStructure impementeaza Node care extinde Visitable (orice nod poate fi vizitat)
+-pune la dispozitie metodele:
+	- getRoot()
+	- setRoot()
+	- getLeft()-adiacent stanga
+	- getRight()-adiacent dreapta
+-este clasa parinte pentru nodurile 
+	 *	- Plus}
+	 * 	- Minus}
+	 * 	- Ori}
+	 *  - Impartit}
+	 *  - Putere}
+	 *  - Sinus}
+	 *  - Cosinus}
+	 *  - Radical}
+	 *  - Logaritm}
+	 *	- Operand}
+
+Clasa NodeFactory implementeaza interfata Factory	
+-in functie de parametrul operator metoda returneaza un nod de tip:
+	 * 	- Plus}
+	 * 	- Minus}
+	 * 	- Ori}
+	 *  - Impartit}
+	 *  - Putere}
+	 *  - Sinus}
+	 *  - Cosinus}
+	 *  - Radical}
+	 *  - Logaritm}

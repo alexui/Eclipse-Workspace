@@ -1,0 +1,50 @@
+package tema1;
+
+public class IntArray {
+
+	private int[] a;
+	private int length;
+	
+	public IntArray()
+	{
+		this.a=new int[0];
+		this.length=0;
+	}
+	
+	public IntArray(int dim)
+	{
+		this.a=new int[dim];
+		this.length=dim;
+	}
+	
+	public int[] getA() {
+		return a;
+	}
+
+	private void extend(int dim)
+	{
+		int old_dim=this.length;
+		int new_dim=old_dim +dim;
+		int[]aux=new int[new_dim];
+		System.arraycopy(this.a, 0, aux, 0, old_dim);
+		this.a=aux;
+		this.length=new_dim;
+	}
+	
+	public void add(int elem)
+	{
+		int i;
+		this.extend(1);
+		if(this.length==0)
+		{
+			this.a[this.length]=elem;
+		}
+		else
+		{
+			for(i=this.length;a[i-1]>elem;i--)
+				a[i]=a[i-1];
+			a[i]=elem;
+		}
+	}
+	
+}

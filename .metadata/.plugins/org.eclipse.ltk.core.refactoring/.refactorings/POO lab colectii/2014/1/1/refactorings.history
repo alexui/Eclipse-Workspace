@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Cresc.java&apos; to &apos;Calculator de buzunar/src/(default package)&apos;&#x0D;&#x0A;- Original project: &apos;POO lab colectii&apos;&#x0D;&#x0A;- Destination element: &apos;Calculator de buzunar/src/(default package)&apos;&#x0D;&#x0A;- Original element: &apos;Ex4.Cresc.java&apos;" description="Copy compilation unit" destination="=Calculator de buzunar/src&lt;" element1="/src&lt;Ex4{Cresc.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1388845431096" units="1" version="1.0"/>
+</session>

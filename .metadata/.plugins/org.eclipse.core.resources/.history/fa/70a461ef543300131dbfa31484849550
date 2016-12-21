@@ -1,0 +1,6 @@
+package ListeSimpluInlantuite;
+
+public class ListRun {
+
+	List list = new List();
+}

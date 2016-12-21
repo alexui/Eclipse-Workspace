@@ -1,0 +1,6 @@
+1385478743224	Encapsulate field 'symbol'
+1385548494417	Rename field 'id'
+1385553805022	Rename local variable 'p'
+1385587493436	Rename field 'RECTANGLE_SYMBOL'
+1385642198786	Rename type 'TriGrapeShoot'
+1385642226770	Rename type 'CanisterShot'

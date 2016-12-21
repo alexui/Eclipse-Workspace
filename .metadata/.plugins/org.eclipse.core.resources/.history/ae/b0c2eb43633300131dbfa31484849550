@@ -1,0 +1,30 @@
+package ListeSimpluInlantuite;
+import java.util.*;
+
+public class ListRun {
+
+	
+	public static void main(String args[])
+	{		
+		List list = new List(); //CREARE LISTA
+	/*	list.getList(list);
+		list.setInfoNod();
+		list.getList(list);*/
+		list.setRandomList(list,(int)(java.lang.Math.random()*4)+2);
+		list.getList(list);
+		
+		//ADAUGARE NOD
+		System.out.print("Adaugare nod inainte\n");
+		list.addNodBefore(list, 2);
+		list.getList(list);
+		System.out.print("Adaugare nod dupa\n");
+		list.addNodAfter(list, 2);
+		list.getList(list);
+		System.out.print("Adaugare nod la sfarsit\n");
+		list.addAtTheEnd(list);
+		list.getList(list);
+		System.out.print("Adaugare nod la incep\n");
+		list=list.addAtTheBeggining(list);
+		list.getList(list);
+	}
+}

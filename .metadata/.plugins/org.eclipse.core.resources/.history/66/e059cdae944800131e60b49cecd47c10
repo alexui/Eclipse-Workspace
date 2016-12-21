@@ -1,0 +1,16 @@
+package Clase_abstraca_si_interfete;
+
+public class PrintMessege implements Task{
+
+	private String messege;
+	
+	public PrintMessege(String s)
+	{
+		this.messege=s;
+	}
+	
+	public void afisareMesaj(String s)
+	{
+		System.out.println(this.messege);
+	}
+}

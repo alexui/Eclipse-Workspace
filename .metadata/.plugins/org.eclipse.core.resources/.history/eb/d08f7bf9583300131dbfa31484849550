@@ -1,0 +1,17 @@
+package ListeSimpluInlantuite;
+import java.util.*;
+
+public class ListRun {
+
+	
+	public static void main(String args[])
+	{		
+		List list = new List();
+	/*	list.getList(list);
+		list.setInfoNod();
+		list.getList(list);*/
+		System.out.println((int)(java.lang.Math.random()*99));
+		list.setRandomList(list,);
+		list.getList(list);
+	}
+}

@@ -1,0 +1,40 @@
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+
+public class DataStreams {
+
+	public static String datafile="invoicedata.txt";
+	public static void main(String[] args) {
+	
+	Scanner in;
+	PrintWriter out;
+		
+		try {
+			int a; 
+			double d;
+			String s;
+			in = new Scanner(new BufferedReader(new FileReader(datafile)));
+			out= new PrintWriter(System.out);
+			a=in.nextInt();
+		//	d=in.nextDouble();
+			s=in.nextLine();
+			System.out.println(a+" "+d+" "+s+"pa");
+		//	out.write("a="+a);
+		//	out.format("a=%d , d=%f, s=%s",a,d,s);
+			in.close();
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+	}
+}

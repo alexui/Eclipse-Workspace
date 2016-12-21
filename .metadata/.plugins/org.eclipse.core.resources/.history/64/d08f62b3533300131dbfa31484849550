@@ -1,0 +1,76 @@
+package ListeSimpluInlantuite;
+import java.util.*;
+
+public class List {
+
+		private Info a;
+		private List urm;
+		
+		public List()
+		{
+			a = new Info();
+			urm=null;
+		}
+		
+		public void setInfoNod(List l,int IndexNod)
+		{
+			Scanner scan = new Scanner(System.in);
+			int n = scan.nextInt();
+			System.out.println("int: ");
+			String s = scan.nextLine();
+			System.out.println("string: ");
+			a.setInfo(n, s);
+			scan.close();
+		}
+		
+		public List searchNod(List l,int n)
+		{
+			if(l==null){System.err.println("Null pointer."); return null;}
+			int i;
+			List p=l;
+			for(i=0;i<n;p=p.urm,i++);
+			return p;
+		}
+		
+		public void addNodBefore(List l,int IndexNod)
+		{
+			if(l==null) {System.err.println("Null pointer."); return;}
+			List nod = new List();
+			nod.setInfoNod();
+			if(IndexNod<=1)
+			{
+				System.err.println("Null pointer."); return;
+			}
+			List Dest=l.searchNod(l, IndexNod-1);
+			nod.urm=Dest.urm;
+			Dest.urm=nod;
+		}
+		
+		public void addNodAfter(List l,int IndexNod)
+		{
+			if(l==null) {System.err.println("Null pointer."); return;}
+			List nod = new List();
+			nod.setInfoNod();
+			List Dest=l.searchNod(l, IndexNod);
+			nod.urm=Dest.urm;
+			Dest.urm=nod;
+		}
+		
+		public void getList(List l)
+		{
+			System.out.println("List:");
+			if(l==null) {System.err.println("Null pointer."); return;}
+			List p;
+			for(p=l;p!=null;p=p.urm)
+			{
+				System.out.printf("(%d,%s), ",p.a.getInfoNumber(),p.a.getInfoString());
+			}
+		}
+		
+		public void setRandomList(List l)
+		{
+			System.out.println("Building list:");
+			if(l==null) {System.err.println("Null pointer."); return;}
+			
+		}
+}

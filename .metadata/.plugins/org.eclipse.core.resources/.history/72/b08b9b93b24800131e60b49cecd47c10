@@ -1,0 +1,8 @@
+package Clase_abstraca_si_interfete;
+
+public class IncrementContor implements Task{
+
+	static int val;
+	
+	
+}

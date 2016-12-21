@@ -1,0 +1,16 @@
+package Projectiles;
+
+import ProcessingManagers.TimeManager;
+import Screen.Screen;
+import Shapes.Point;
+import Shapes.Triangle;
+
+public class TriGrapeShoot extends Shrapnel {
+
+	public TriGrapeShoot(Screen screen, int ref, TimeManager currentTime) {
+		super(screen, ref, currentTime);
+		this.shape = new Triangle();
+	}
+
+
+}

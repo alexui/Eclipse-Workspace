@@ -1,0 +1,32 @@
+package Ex1;
+import org.junit.Assert;
+import org.junit.Before;
+
+
+public class Test {
+
+	public Zoo zoo;
+	
+	@Before
+	public void setup()
+	{
+		zoo = new Zoo();
+		zoo.addAnimal(new Animal("Cerb",1));
+		zoo.addAnimal(new Animal("Urs",2));
+		zoo.addAnimal(new Animal("Maimuta",3));
+	}
+	
+	@org.junit.Test
+	public void addAnimalTest(){
+		Animal a = new Animal("Elefant",3);
+		zoo.addAnimal(a);
+		
+		Assert.assertEquals(a,zoo.getAnimals().getLast());
+	}
+	
+	@org.junit.Test
+	public void testRemoveAnimal(){
+		
+		
+	}
+}

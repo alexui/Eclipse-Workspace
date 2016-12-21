@@ -1,0 +1,7 @@
+package ListeSimpluInlantuite;
+
+public class List {
+
+		private Info a;
+		private List urm;
+}

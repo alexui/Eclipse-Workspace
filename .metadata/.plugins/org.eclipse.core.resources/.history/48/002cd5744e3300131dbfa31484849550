@@ -1,0 +1,24 @@
+package ListeSimpluInlantuite;
+
+public class List {
+
+		private Info a;
+		private List urm;
+		
+		public List()
+		{
+			a = new Info();
+			urm=null;
+		}
+		
+		public void setInfoNod()
+		{
+			a.setInfo(n, str);
+		}
+		
+		public void addNodBefore(int n,String str)
+		{
+			List nod = new List();
+			
+		}
+}

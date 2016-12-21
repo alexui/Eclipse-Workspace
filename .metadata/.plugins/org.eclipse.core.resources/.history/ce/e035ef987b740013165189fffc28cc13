@@ -1,0 +1,48 @@
+package Ex1;
+
+public class Animal {
+
+	private String type;
+	private Integer cageNumber;
+	
+	public Animal(String type, Integer cageNumber) {
+		super();
+		this.type = type;
+		this.cageNumber = cageNumber;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public Integer getCageNumber() {
+		return cageNumber;
+	}
+
+	public void setCageNumber(Integer cageNumber) {
+		this.cageNumber = cageNumber;
+	}
+	
+	@Override
+	public String toString(){
+		return ""+this.type+" "+this.cageNumber;
+	}
+	
+	
+	public boolean equals(Animal animal){
+		
+		
+		if(((Animal)animal).type==this.type && ((Animal)animal).cageNumber==this.cageNumber) 
+			return true; 
+		return false;
+	}
+	
+	@Override 
+	public int hashCode(){
+		return type.hashCode()+cageNumber.intValue();
+	}
+}

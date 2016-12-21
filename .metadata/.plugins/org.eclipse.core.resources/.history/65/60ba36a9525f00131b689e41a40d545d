@@ -1,0 +1,102 @@
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class MyHashMapImpl<K,V> implements MyHashMap<K, V>{
+
+	private ArrayList<Bucket> bucket_list;
+	private myBucket bucket;
+	int num_buckets;
+	
+	public MyHashMapImpl(int NUM_BUCKETS){
+		this.bucket_list = new ArrayList<>();
+		bucket = new myBucket();
+		num_buckets=NUM_BUCKETS;
+	}
+	
+	private class myBucket implements MyHashMap.Bucket<K, V>
+	{
+		ArrayList<myEntry> entries;
+		
+		public myBucket(){
+			entries = new ArrayList<myEntry>();
+		}
+		
+		private class myEntry implements MyHashMap.Entry<K, V>{
+
+			private K key;
+			private V value;
+			
+			public myEntry(K key, V value){
+				this.key = key;
+				this.value= value;
+			}
+			
+			@Override
+			public K getKey() {
+				return key;
+			}
+
+			@Override
+			public V getValue() {
+				return value;
+			}
+
+			public void setKey(K key) {
+				this.key = key;
+			}
+
+			public void setValue(V value) {
+				this.value = value;
+			}
+			
+		}
+		
+		@Override
+		public List<? extends MyHashMap.Entry<K, V>> getEntries() {
+			return entries;
+		}
+		
+	}
+	@Override
+	public V get(K key) {
+		
+		return null;
+	}
+
+	/**
+	 * Adauga o asociere cheie-valoare.
+	 * 
+	 * @param key
+	 * @param value
+	 * @return valoarea anterioara asociata cheii key SAU null daca cheia nu exista
+	 */
+	
+	@Override
+	public V put(K key, V value) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public V remove(K key) {
+		
+		return null;
+	}
+
+	@Override
+	public int size() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	
+
+	@Override
+	public List<? extends MyHashMap.Bucket<K, V>> getBuckets() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+
+}

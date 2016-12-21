@@ -1,0 +1,37 @@
+package Projectiles;
+
+import ProcessingManagers.TimeManager;
+import Screen.Screen;
+import Shapes.Point;
+import Shapes.Square;
+
+public class Shrapnel extends SpiderShot{
+
+	public Shrapnel(Screen screen, int ref, TimeManager currentTime) {
+		super(screen, ref, currentTime);
+			this.shape = new Square();
+	}
+
+	@Override
+	public void shoot(int dist, Point shooterPosition) {
+
+		if(dist<0) return;
+		
+		Point p = new Point(shooterPosition.getX(),
+							shooterPosition.getY()+
+				(int)Math.round(Math.cos(dist*(Math.PI)/2)));
+		
+		computeDistance(6, currentTime);
+		if(dist>shapeChangingDist){
+			super.shoot(dist-shapeChangingDist, p);
+		}
+		else
+			hitScreenAction(p, this.ref);
+	}
+	
+	@Override
+	protected void hitScreenAction(Point shooterPosition, int ref) {
+	
+		shape.draw(screen, ref, shooterPosition);
+	}
+}

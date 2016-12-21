@@ -1,0 +1,136 @@
+import java.util.LinkedHashMap;
+import java.util.Scanner;
+import java.util.Stack;
+
+
+public class ExpressionParser {
+	
+	private String e;
+	private class Operators{ //clasa contine un map se asociaza fiecarui operator gradul de prioritate ->+ are prioritatea cea mai mare
+		
+		public LinkedHashMap<String, Integer> map;
+		
+		public Operators(){
+			
+			map = new LinkedHashMap<String,Integer>();
+			map.put("+",1);
+			map.put("-",2);
+			map.put("/",3);
+			map.put("*",4);
+			map.put("^",5);
+			map.put("log",6);
+			map.put("sin",6);
+			map.put("cos",6);
+			map.put("sqrt",6);
+			map.put("- ",6);
+			map.put("(",7);
+		}
+	}
+	private class Node{
+		
+		public String root;
+		public Node left;
+		public Node right;
+	}
+	private class SyntaxCorectness implements Observer{ //observator 
+
+		public boolean CORECT;
+		Operators o = new Operators();
+		private boolean operator=false;
+		private boolean operand=true;
+		private boolean parantheses=true;
+		
+		@Override
+		public void notifyEvent(String s) {
+			
+			if(operator == testOperator(s) || operand == testOperand(s) || parantheses==testParantheses(s))
+				CORECT = true;
+		}
+		
+		private boolean testOperator(String s){
+			
+			if(o.map.keySet().contains(s)){
+				return true;
+			}
+			return false;
+		}
+		
+		private boolean testParantheses(String s){
+			if(s.equals(")") || s.equals("("))
+				return true;
+			return false;
+		}
+		
+		private boolean testOperand(String s){
+			
+			if(!testOperator(s) && !testParantheses(s))
+				return true;
+			return false;
+		}
+		
+	}
+	
+	private Stack<Node> ResultStack;
+	private Stack<String> OperatorStack;
+	
+	private int searchForCharacter(String s,char c){
+		
+		int nr=0;
+		for(int i=0;i<s.length();i++){
+			if(s.charAt(i)==c)
+				nr++;
+			}
+		return nr;
+	}
+		
+	private boolean corectMinus(String s){
+		
+		int i=0;
+		while(s.charAt(i)==' ') i++;
+		if(s.charAt(i)=='-' && s.charAt(i+1)!=' ')
+			return false;
+		if(!Character.isDigit(s.charAt(i+2)) && s.charAt(i+2)!='(')
+			return false;
+		return true;
+	}
+	
+	
+	
+	public float eval(String expression) throws SyntacticException, EvaluatorException{
+		// do the magic
+		
+		e = expression;
+		String token;
+		
+		//verificarea numarului de paranteze
+		if(searchForCharacter(e, '(')!=searchForCharacter(e,')'))
+			throw new SyntacticException();
+		
+		
+		//folosirea incorecta a minusului unar
+		if(!corectMinus(e))		
+			throw new SyntacticException();
+		
+		ResultStack = new Stack<Node>();
+		OperatorStack = new Stack<String>();
+		Operators o = new Operators();
+		Scanner parse = new Scanner(e);
+		
+		if(e.charAt(0)=='-'){
+			OperatorStack.push("- ");
+			e=e.substring(2);
+			}
+		
+		if(!parse.hasNext())
+		
+		while(parse.hasNext()){
+			token =  parse.next();
+			
+		}
+		
+		
+		
+		return 0f;
+	}
+	
+}

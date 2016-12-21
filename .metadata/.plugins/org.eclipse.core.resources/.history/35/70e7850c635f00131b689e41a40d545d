@@ -1,0 +1,13 @@
+
+public class Student {
+
+	private String nume;
+	private int varsta;
+	
+	public int hashCode()
+	{
+		String s = this.nume.toLowerCase();
+		int hashcode = translate(s.hashCode()); // se calculeaza hashcode-ul pentru cheie
+		return hashcode;
+	}
+}

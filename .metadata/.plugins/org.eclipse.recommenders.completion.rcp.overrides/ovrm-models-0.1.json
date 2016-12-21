@@ -1,0 +1,27 @@
+{
+  "C:\\Program Files\\Java\\jre7\\lib\\rt.jar": {
+    "location": "C:\\Program Files\\Java\\jre7\\lib\\rt.jar",
+    "status": "UNRESOLVED",
+    "error": "No call model found for \u0027C:\\Program Files\\Java\\jre7\\lib\\rt.jar\u0027. Neither fingerprint \u0027442144fb304e0895e42527f0d796dc6a070afc49\u0027 nor symbolic name \u0027jre\u0027 are known."
+  },
+  "E:\\Eclipse Workspace\\POO lab4\\src": {
+    "location": "E:\\Eclipse Workspace\\POO lab4\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\POO lab4\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\POO lab5\\src": {
+    "location": "E:\\Eclipse Workspace\\POO lab5\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\POO lab5\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\MapReduce\\src": {
+    "location": "E:\\Eclipse Workspace\\MapReduce\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\MapReduce\\src\u0027. Skipped."
+  },
+  "E:\\Eclipse Workspace\\MapReduce\\MapReduce\\src": {
+    "location": "E:\\Eclipse Workspace\\MapReduce\\MapReduce\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027E:\\Eclipse Workspace\\MapReduce\\MapReduce\\src\u0027. Skipped."
+  }
+}

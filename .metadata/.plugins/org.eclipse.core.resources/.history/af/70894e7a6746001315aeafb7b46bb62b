@@ -1,0 +1,78 @@
+package tema1;
+
+public class Index {
+	
+	/**
+	 * Execution entry point.
+	 *
+	 * @param args two strings representing the name of the file that contains the text to index,
+	 * and the name of the file containing words to lookup in the text.
+	 */
+	
+	public static String arrayToString(int[] a)
+	{
+		String s= new String();
+		int i;
+		for(i=0;i<a.length;i++)
+			s+=a[i]+" ";
+		return s;
+	}
+	
+	public static void main(String[] args) throws NullPointerException{
+	/*	if (args.length != 2) {
+			System.err.println("Usage: java -cp <classpath> Index <text file> <word file>");
+			System.exit(1);
+		}*/
+
+		// TODO: replace with homework implementation:
+
+		String word;
+
+		FileParser textFile = new FileParser("search");
+		textFile.open();
+		System.out.print("Text words:");
+		while ((word = textFile.getNextWord()) != null) {
+			System.out.print(" " + word);
+		} 
+		System.out.println();
+
+		
+		CreateRT build = new CreateRT("search");
+		RadixTree tree=build.getRadixTree();
+		
+		System.out.println("main");
+		//System.out.println(tree.getUrm()[0].getUrm()[1].getSub());
+		
+		build.printRadixTree(tree, 0);
+		
+		System.out.println("Searching for element:");
+		build.search(tree, "eagle")
+		
+		/*System.out.println("Adding to tree:");
+		boolean found;
+		found = build.buildRadixTree(tree, "eric");
+		System.out.println(found);
+		
+		build.printRadixTree(tree, 0);
+
+		System.out.println("Searching for element:");
+		int pos = build.search(tree, "eats");
+		if(pos==build.NOT_FOUND) 
+			System.out.println("Not found");
+		else
+			System.out.println("Found at: "+pos);*/
+		
+		
+		
+		
+
+	/*	FileParser prefixFile = new FileParser("search");
+		prefixFile.open();
+		System.out.print("\nPrefixes:");
+		while ((word = prefixFile.getNextWord()) != null) {
+			System.out.print(" " + word);
+		}
+		prefixFile.close();*/
+	}
+
+}

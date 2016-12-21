@@ -1,0 +1,12 @@
+
+public class Student {
+
+	private String nume;
+	private int varsta;
+	
+	public int hashCode()
+	{
+		String s = String.valueOf(this.nume.charAt(0)).toLowerCase();
+		return s.hashCode(); 
+	}
+}

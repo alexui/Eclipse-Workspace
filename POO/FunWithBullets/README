@@ -1,0 +1,35 @@
+README - checker Tema 2 POO
+
+Salut,
+
+Pasii pe care trebuie sa ii urmati pentru a va testa local tema sunt urmatorii:
+
+1) Copiati intreg continutul acestei arhive in directorul radacina al 
+proiectului vostru
+	* directorul radacina nu este cel cu sursele, ci acela cu un nivel mai sus,
+	care are si numele proiectului (in cazul scheletului de cod, directorul radacina
+	al proiectului este FunWithBullets/)
+
+2) Rulati scriptul checker.sh din directorul radacina al proiectului
+	* acest script compileaza sursele voastre (indiferent daca sunt in pachete sau nu),
+	ruleaza programul rezultat pe toate fisierele din "input files", dupa care le compara
+	cu cele referinta generate de rezolvarea noastra
+
+Sunt 80 de teste ce se ruleaza, iar la final se afiseaza scorul pe care l-ati obtinut;
+testele au pondere egala, fiecare dintre ele valorand 1 punct din cele 80 acordate
+de catre checker.
+
+Restrictii:
+	-> clasa ce contine functia main trebuie sa se afle intr-un fisier numit "Main.java"
+	-> fisierul "Main.java" trebuie sa se afle in pachetul default, nu intr-un pachet
+	creat de voi (acest lucru implica si sa nu redenumiti pachetul default)
+	-> aveti grija ca sursele compilate sa fie generate in directorul "bin", caci acesta
+	este directorul in care checker-ul considera ca se gasesc sursele compilate
+
+Sugestii:
+	-> checker-ul muta si sterge automat fisierele voastre de output la terminarea rularii;
+	daca aveti nevoie de aceste fisiere pentru comparare manuala cu cele de referinta,
+	comentati ultima linie din checker (pentru a face acest lucru, puneti caracterul # in
+	fata liniei pe care doriti sa o comentati)
+
+Multa bafta :)

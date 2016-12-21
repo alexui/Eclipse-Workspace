@@ -1,0 +1,8 @@
+package Ex2;
+import ClassFiles.*;
+
+public class GeometricFormsTest {
+
+	Forms forms = 
+	GeometricForms gforms = new GeometricForms();
+}

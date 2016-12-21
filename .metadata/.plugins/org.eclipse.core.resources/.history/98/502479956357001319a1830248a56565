@@ -1,0 +1,14 @@
+package Projectiles;
+
+import ProcessingManagers.TimeManager;
+import Screen.Screen;
+
+public class Carcass extends HeatedShot{
+
+	public Carcass(Screen screen, int ref, TimeManager currentTime) {
+		super(screen, ref, currentTime);
+		this.shape = new Sqare();
+		
+	}
+
+}

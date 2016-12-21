@@ -1,0 +1,27 @@
+package Projectiles;
+
+import ProcessingManagers.TimeManager;
+import Screen.Screen;
+import Shapes.Point;
+
+public class TriGrapeShoot extends Projectile {
+
+	
+	public TriGrapeShoot(Screen screen, int ref, TimeManager currentTime) {
+		super(screen, ref, currentTime);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void shoot(int dist, Point shooterPosition) {
+
+		shapeChangingDist = 42 + (id1*id1*currentTime.getH()+id1*currentTime.getMin()+currentTime.getSec())%42;
+	}
+
+	@Override
+	protected void hitScreenAction(Point shooterPosition, int ref) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

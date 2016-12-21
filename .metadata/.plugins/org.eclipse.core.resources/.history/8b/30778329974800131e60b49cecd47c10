@@ -1,0 +1,13 @@
+package Clase_abstraca_si_interfete;
+
+public class RandGen implements Task{
+
+	private int nr;
+
+	public RandGen() {
+		
+		this.nr=(int)Math.random()*99;
+	}
+	
+	
+}

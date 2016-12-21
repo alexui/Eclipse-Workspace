@@ -1,0 +1,11 @@
+
+public class SmartArray {
+	
+	private int[] IntString;
+	private int nElems;
+
+	public SmartArray(int[] M)
+	{
+		
+	}
+}

@@ -1,0 +1,40 @@
+package ListeSimpluInlantuite;
+import java.util.*;
+
+public class Info {
+	
+	private int number;
+	private String s;
+	
+	public Info(int n,String str)
+	{
+		this.number=n;
+		this.s=str;
+	}
+	
+	public Info()
+	{
+		Scanner scan= new Scanner(System.in);
+		System.out.println("Insert number: ");
+		this.number=scan.nextInt();
+		System.out.println("Insert string: ");
+		this.s=scan.nextLine();
+		scan.close();
+	}
+	
+	public void setInfo(int n,String str)
+	{
+		this.number=n;
+		this.s=str;
+	}
+	
+	public int getInfoNumber()
+	{
+		return this.number;
+	}
+	
+	public String getInfoString()
+	{
+		return this.s;
+	}
+}

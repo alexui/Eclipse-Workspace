@@ -1,0 +1,29 @@
+package Projectiles;
+
+import ProcessingManagers.TimeManager;
+import Screen.Screen;
+import Shapes.Point;
+import Shapes.Triangle;
+
+public class ChainShot extends Shrapnel{
+
+	public ChainShot(Screen screen, int ref, TimeManager currentTime) {
+		super(screen, ref, currentTime);
+		this.shape=new Triangle();
+	}
+
+	@Override
+	public void shoot(int dist, Point shooterPosition) {
+
+		if(dist<0) return;
+		
+		Point p = new Point(shooterPosition.getX()-dist,shooterPosition.getY());
+		
+		computeDistance(4, currentTime);
+		if(dist>shapeChangingDist){
+			super.shoot(dist-shapeChangingDist, p);
+		}
+		else
+			hitScreenAction(p, this.ref);
+	}
+}

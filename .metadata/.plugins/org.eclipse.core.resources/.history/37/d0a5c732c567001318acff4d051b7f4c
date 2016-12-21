@@ -1,0 +1,13 @@
+package Ex4;
+
+import java.util.LinkedList;
+
+public class MyLinkedList<K> extends LinkedList<K> implements Comparable<K> {
+
+	@Override
+	public int compareTo(K o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}
